@@ -17,46 +17,35 @@ export default {
         maxLength: 96,
       },
     },
-    {
-      title: 'Default variant',
-      name: 'defaultProductVariant',
-      type: 'productVariant',
-    },
-    {
-      title: 'Variants',
-      name: 'variants',
-      type: 'array',
-      of: [
-        {
-          title: 'Variant',
-          type: 'productVariant',
-        },
-      ],
-    },
-    {
-      title: 'Tags',
-      name: 'tags',
-      type: 'array',
-      of: [
-        {
-          type: 'string',
-        },
-      ],
-      options: {
-        layout: 'tags',
-      },
-    },
+    // {
+    //   title: 'Default variant',
+    //   name: 'defaultProductVariant',
+    //   type: 'productVariant',
+    // },
+    // {
+    //   title: 'Tags',
+    //   name: 'tags',
+    //   type: 'array',
+    //   of: [
+    //     {
+    //       type: 'string',
+    //     },
+    //   ],
+    //   options: {
+    //     layout: 'tags',
+    //   },
+    // },
     {
       name: 'vendor',
       title: 'Vendor',
       type: 'reference',
-      to: {type: 'vendor'},
+      to: { type: 'vendor' },
     },
-    {
-      name: 'blurb',
-      title: 'Blurb',
-      type: 'localeString',
-    },
+    // {
+    //   name: 'blurb',
+    //   title: 'Blurb',
+    //   type: 'localeString',
+    // },
     {
       name: 'categories',
       title: 'Categories',
@@ -64,14 +53,19 @@ export default {
       of: [
         {
           type: 'reference',
-          to: {type: 'category'},
+          to: { type: 'category' },
         },
       ],
     },
     {
-      name: 'body',
-      title: 'Body',
-      type: 'localeBlockContent',
+      title: 'Description',
+      name: 'description',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+        },
+      ],
     },
   ],
 

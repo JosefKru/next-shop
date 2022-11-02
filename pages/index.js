@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Header from '../components/Header'
 import Landing from './../components/Landing'
 
-export default function Home() {
+function Home() {
   return (
     <div>
       <Head>
@@ -12,9 +12,20 @@ export default function Home() {
 
       <Header />
 
-      <main className="relative h-[200vh] bg-[#f0f7fd]">
+      <main className="relative bg-[#f0f7fd]">
         <Landing />
       </main>
+
+      <section className="  bg-gradient-to-b from-[#f0f7fd]">
+        <div className="space-y-10 py-16">
+          <h1 className="text-center text-4xl font-bold tracking-wide text-[#404e65] md:text-5xl">
+            New Promos
+          </h1>
+        </div>
+        <p>Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem</p>
+      </section>
     </div>
   )
 }
+
+export default Home

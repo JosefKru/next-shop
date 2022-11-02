@@ -17,21 +17,21 @@ export default {
         maxLength: 96,
       },
     },
-    {
-      name: 'description',
-      title: 'Description',
-      type: 'text',
-    },
-    {
-      name: 'parents',
-      title: 'Parent categories',
-      type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: [{type: 'category'}],
-        },
-      ],
-    },
+    // {
+    //   name: 'description',
+    //   title: 'Description',
+    //   type: 'text',
+    // },
+    // {
+    //   name: 'parents',
+    //   title: 'Parent categories',
+    //   type: 'array',
+    //   of: [
+    //     {
+    //       type: 'reference',
+    //       to: [{type: 'category'}],
+    //     },
+    //   ],
+    // },
   ],
 }
