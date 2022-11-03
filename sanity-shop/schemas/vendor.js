@@ -1,6 +1,6 @@
 export default {
   name: 'vendor',
-  title: 'Vendor',
+  title: 'Brand',
   type: 'document',
   fields: [
     {
@@ -17,21 +17,5 @@ export default {
         maxLength: 96,
       },
     },
-    {
-      name: 'logo',
-      title: 'logo',
-      type: 'image',
-    },
-    {
-      name: 'description',
-      title: 'Description',
-      type: 'blockContent',
-    },
   ],
-  preview: {
-    select: {
-      title: 'title',
-      media: 'logo',
-    },
-  },
 }

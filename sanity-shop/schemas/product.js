@@ -17,63 +17,36 @@ export default {
         maxLength: 96,
       },
     },
-    // {
-    //   title: 'Default variant',
-    //   name: 'defaultProductVariant',
-    //   type: 'productVariant',
-    // },
-    // {
-    //   title: 'Tags',
-    //   name: 'tags',
-    //   type: 'array',
-    //   of: [
-    //     {
-    //       type: 'string',
-    //     },
-    //   ],
-    //   options: {
-    //     layout: 'tags',
-    //   },
-    // },
+    {
+      name: 'image',
+      title: 'Image',
+      type: 'array',
+      of: [{ type: 'image' }],
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: 'price',
+      title: 'Price',
+      type: 'number',
+    },
     {
       name: 'vendor',
-      title: 'Vendor',
+      title: 'Brand',
       type: 'reference',
       to: { type: 'vendor' },
     },
-    // {
-    //   name: 'blurb',
-    //   title: 'Blurb',
-    //   type: 'localeString',
-    // },
     {
-      name: 'categories',
-      title: 'Categories',
-      type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: { type: 'category' },
-        },
-      ],
+      name: 'category',
+      title: 'Category',
+      type: 'reference',
+      to: [{ type: 'category' }],
     },
     {
       title: 'Description',
       name: 'description',
-      type: 'array',
-      of: [
-        {
-          type: 'block',
-        },
-      ],
+      type: 'blockContent',
     },
   ],
-
-  preview: {
-    select: {
-      title: 'title',
-      manufactor: 'manufactor.title',
-      media: 'defaultProductVariant.images[0]',
-    },
-  },
 }
