@@ -10,7 +10,7 @@ function Home({ categories, products }) {
   const showProducts = (category) => {
     return products
       .filter((product) => product.category._ref === categories[category]._id)
-      .map((product) => <Product product={product} key={product._id} />)
+      .map((product) => <Product {...product} key={product._id} />)
   }
 
   return (
@@ -26,7 +26,7 @@ function Home({ categories, products }) {
         <Landing />
       </main>
 
-      <section className="  bg-gradient-to-b from-[#f0f7fd]">
+      <section className="bg-gradient-to-b from-[#f0f7fd]">
         <div className="space-y-10 py-16">
           <h1 className="text-center text-4xl font-bold tracking-wide text-[#404e65] md:text-5xl">
             New Promos
