@@ -33,7 +33,7 @@ function Home({ categories, products }) {
           </h1>
 
           <Tab.Group>
-            <Tab.List className="flex justify-center">
+            <Tab.List className="flex  items-center justify-center">
               {categories.map((category) => (
                 <Tab
                   key={category._id}
