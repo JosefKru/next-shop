@@ -5,8 +5,11 @@ import Product from './../components/Product'
 import { fetchCategories } from '../utils/fetchCategories'
 import { Tab } from '@headlessui/react'
 import { fetchProducts } from './../utils/fetchProducts'
+import { useState } from 'react'
 
 function Home({ categories, products }) {
+  const [items, setItems] = useState([])
+
   const showProducts = (category) => {
     return products
       .filter((product) => product.category._ref === categories[category]._id)
@@ -33,13 +36,13 @@ function Home({ categories, products }) {
           </h1>
 
           <Tab.Group>
-            <Tab.List className="flex  items-center justify-center">
+            <Tab.List className="flex items-center justify-center ">
               {categories.map((category) => (
                 <Tab
                   key={category._id}
                   id={category._id}
                   className={({ selected }) =>
-                    `mx-4 whitespace-nowrap rounded-3xl border-4 py-2 px-5 font-bold focus:outline-none md:text-base ${
+                    `mx-4 whitespace-nowrap rounded-3xl border-4 py-2 px-5 font-bold focus:outline-none sm:text-xs md:text-base  ${
                       selected
                         ? 'border-[#56b0f2] text-[#56b0f2] '
                         : 'text-[#747474]'
