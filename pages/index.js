@@ -5,15 +5,15 @@ import Product from './../components/Product'
 import { fetchCategories } from '../utils/fetchCategories'
 import { Tab } from '@headlessui/react'
 import { fetchProducts } from './../utils/fetchProducts'
-import { useState } from 'react'
+import Basket from '../components/Basket'
 
 function Home({ categories, products }) {
-  const [items, setItems] = useState([])
-
   const showProducts = (category) => {
     return products
       .filter((product) => product.category._ref === categories[category]._id)
-      .map((product) => <Product {...product} key={product._id} />)
+      .map((product) => (
+        <Product {...product} product={product} key={product._id} />
+      ))
   }
 
   return (
@@ -24,6 +24,8 @@ function Home({ categories, products }) {
       </Head>
 
       <Header />
+
+      <Basket />
 
       <main className="relative bg-[#f0f7fd]">
         <Landing />

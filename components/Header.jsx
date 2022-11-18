@@ -4,9 +4,12 @@ import React from 'react'
 import { BiSearchAlt } from 'react-icons/bi'
 import { HiOutlineShoppingCart } from 'react-icons/hi'
 import { AiOutlineUser } from 'react-icons/ai'
+import { useSelector } from 'react-redux'
+import { selectBasketItems } from '../redux/basketSlice'
 
 function Header() {
   const session = false
+  const items = useSelector(selectBasketItems)
 
   return (
     <header className="flex w-full items-center justify-between bg-[#f0f7fd] p-11">
@@ -41,7 +44,7 @@ function Header() {
         <Link href="/checkout">
           <div className="relative cursor-pointer">
             <span className="absolute -right-1 -top-1 z-50 flex h-4 w-4 items-center justify-center rounded-full bg-gradient-to-r from-pink-500 to-violet-500 text-[10px]  text-white">
-              5
+              {items.length}
             </span>
             <HiOutlineShoppingCart className="headerIcon" />
           </div>
