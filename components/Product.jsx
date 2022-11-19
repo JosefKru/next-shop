@@ -19,14 +19,14 @@ const Product = ({ product }) => {
     <div className=" h-[305px] w-40 select-none rounded-xl border-2 bg-[#ffffff] p-6 md:h-[395px] md:w-[262px]">
       <div className="relative h-36 w-36 md:h-52 md:w-52">
         <Image
-          src={urlFor(product.image).url()}
+          src={urlFor(product.image).width(210).height(210).url()}
           layout="fill"
           objectFit="contain"
           alt=""
         />
       </div>
 
-      <div className="md:w-52">
+      <div className="">
         <div className="space-y-2 text-sm md:text-xl">
           <p>{product.title}</p>
           <p>{product.price}</p>
