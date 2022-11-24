@@ -1,10 +1,10 @@
 import Image from 'next/image'
 import Currency from 'react-currency-formatter'
+import toast from 'react-hot-toast'
 import { urlFor } from '../lib/client'
 import { GrFormDown } from 'react-icons/gr'
 import { useDispatch } from 'react-redux'
 import { removeFromBasket } from '../redux/basketSlice'
-import toast from 'react-hot-toast'
 
 const CheckoutProduct = ({ items, id }) => {
   const dispatch = useDispatch()
