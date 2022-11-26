@@ -21,6 +21,7 @@ const Success = () => {
               alt="logo"
             />
           </div>
+          <div>test</div>
         </Link>
       </header>
 
