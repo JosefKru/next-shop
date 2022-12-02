@@ -2,11 +2,11 @@ import Head from 'next/head'
 import Header from '../components/Header'
 import CheckoutProduct from '../components/CheckoutProduct'
 import Button from '../components/Button'
+import Currency from 'react-currency-formatter'
 import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { selectBasketItems, selectBasketTotal } from '../redux/basketSlice'
-import Currency from 'react-currency-formatter'
 
 const Checkout = () => {
   const basketTotal = useSelector(selectBasketTotal)
@@ -34,7 +34,6 @@ const Checkout = () => {
           <h1 className="my-4 text-3xl font-semibold lg:text-4xl">
             {items.length > 0 ? 'Review your bag' : 'Your bag is empt'}
           </h1>
-          <p className="my-4">Bla bla bla bla</p>
 
           {items.length === 0 && (
             <Button

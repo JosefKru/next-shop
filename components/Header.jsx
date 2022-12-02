@@ -6,6 +6,7 @@ import { HiOutlineShoppingCart } from 'react-icons/hi'
 import { AiOutlineUser } from 'react-icons/ai'
 import { useSelector } from 'react-redux'
 import { selectBasketItems } from '../redux/basketSlice'
+import { useSession, signIn, signOut } from 'next-auth/react'
 
 function Header() {
   const session = false
@@ -51,9 +52,15 @@ function Header() {
         </Link>
 
         {session ? (
-          <Image alt="" className="headerIcon" width={34} height={34} />
+          <Image
+            alt=""
+            className="headerIcon"
+            width={34}
+            height={34}
+            onClick={() => signOut()}
+          />
         ) : (
-          <AiOutlineUser className="headerIcon" />
+          <AiOutlineUser className="headerIcon" onClick={() => signIn()} />
         )}
       </div>
     </header>
