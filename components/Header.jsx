@@ -9,7 +9,7 @@ import { selectBasketItems } from '../redux/basketSlice'
 import { useSession, signIn, signOut } from 'next-auth/react'
 
 function Header() {
-  const session = false
+  const { data: session } = useSession()
   const items = useSelector(selectBasketItems)
 
   return (
@@ -53,8 +53,12 @@ function Header() {
 
         {session ? (
           <Image
-            alt=""
-            className="headerIcon"
+            src={
+              session.user?.image ||
+              'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y'
+            }
+            alt="avatar"
+            className="cursor-pointer rounded-full"
             width={34}
             height={34}
             onClick={() => signOut()}
