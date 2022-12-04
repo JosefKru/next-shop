@@ -12,6 +12,7 @@ function Header() {
   const { data: session } = useSession()
   const items = useSelector(selectBasketItems)
 
+  console.log(session)
   return (
     <header className="flex w-full items-center justify-between bg-[#f0f7fd] p-11">
       <div className="flex items-center justify-center md:w-1/5">

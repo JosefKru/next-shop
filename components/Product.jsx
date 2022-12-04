@@ -7,6 +7,7 @@ import toast from 'react-hot-toast'
 
 const Product = ({ product }) => {
   const dispatch = useDispatch()
+
   const addItemToBasket = () => {
     dispatch(addToBasket(product))
 
@@ -16,8 +17,8 @@ const Product = ({ product }) => {
   }
 
   return (
-    <div className=" h-[305px] w-40 select-none rounded-xl border-2 bg-[#ffffff] p-6 md:h-[395px] md:w-[262px]">
-      <div className="relative h-36 w-36 md:h-52 md:w-52">
+    <div className="h-[305px] w-40 select-none rounded-xl border-2 bg-[#ffffff] p-6 md:h-[395px] md:w-[262px]">
+      <div className="relative h-28 w-28 md:h-52 md:w-52">
         <Image
           src={urlFor(product.image).width(210).height(210).url()}
           layout="fill"
@@ -26,10 +27,10 @@ const Product = ({ product }) => {
         />
       </div>
 
-      <div className="">
-        <div className="space-y-2 text-sm md:text-xl">
+      <div className="pt-3 font-bold">
+        <div className="space-y-2 text-sm text-[#404e65] hover:text-[#56b0f2] md:text-xl">
           <p>{product.title}</p>
-          <p>{product.price}</p>
+          <p className="text-[#56b0f2]">{product.price}₴</p>
         </div>
 
         <div

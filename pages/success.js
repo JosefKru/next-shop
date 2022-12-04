@@ -1,16 +1,17 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Button from '../components/Button'
 import Link from 'next/link'
-import Currency from 'react-currency-formatter'
 import { useEffect, useState } from 'react'
 import { AiFillCheckCircle } from 'react-icons/ai'
 import { useMediaQuery } from 'react-responsive'
-import Button from '../components/Button'
 import { useRouter } from 'next/router'
+import { useSession } from 'next-auth/react'
 
 const Success = () => {
   const [mounted, setMounted] = useState(false)
   const router = useRouter()
+  const { data: session } = useSession()
 
   useEffect(() => {
     setMounted(true)
@@ -57,7 +58,10 @@ const Success = () => {
             </div>
             <div>
               <p className="text-sm text-gray-600">Oreder #number</p>
-              <h4 className="text-lg">Thank you! ... name</h4>
+              <h4 className="text-lg">
+                Thank you{' '}
+                {session ? session.user?.name?.split(' ')[0] : 'Guest'}
+              </h4>
             </div>
           </div>
 
