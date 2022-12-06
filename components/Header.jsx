@@ -12,12 +12,12 @@ function Header() {
   const { data: session } = useSession()
   const items = useSelector(selectBasketItems)
 
-  console.log(session)
+  // console.log(session)
   return (
     <header className="flex w-full items-center justify-between bg-[#f0f7fd] p-11">
       <div className="flex items-center justify-center md:w-1/5">
         <Link href="/">
-          <div className="relative h-20 w-40 cursor-pointer opacity-90 transition hover:opacity-100">
+          <div className="relative h-20 w-40 cursor-pointer transition">
             <Image
               src="/logo.svg"
               layout="fill"
@@ -45,7 +45,7 @@ function Header() {
         <BiSearchAlt className="headerIcon" />
         <Link href="/checkout">
           <div className="relative cursor-pointer">
-            <span className="absolute -right-1 -top-1 z-50 flex h-4 w-4 items-center justify-center rounded-full bg-gradient-to-r from-pink-500 to-violet-500 text-[10px]  text-white">
+            <span className="absolute -right-3 -top-3 z-50 flex h-6 w-6 items-center justify-center rounded-full bg-[#ff5b4b] text-[14px]  font-bold text-white">
               {items.length}
             </span>
             <HiOutlineShoppingCart className="headerIcon" />
