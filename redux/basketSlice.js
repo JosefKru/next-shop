@@ -30,10 +30,13 @@ export const basketSlice = createSlice({
       state.items = newBasket
     },
   },
+
+  removeAllFromBasket: (state, action) => {},
 })
 
 // Action creators
-export const { addToBasket, removeFromBasket } = basketSlice.actions
+export const { addToBasket, removeFromBasket, removeAllFromBasket } =
+  basketSlice.actions
 
 // Selectors
 export const selectBasketItems = (state) => state.basket.items
