@@ -14,7 +14,7 @@ function Header() {
 
   // console.log(session)
   return (
-    <header className="flex w-full items-center justify-between bg-[#f0f7fd] p-11">
+    <header className="flex w-full items-center justify-between p-11">
       <div className="flex items-center justify-center md:w-1/5">
         <Link href="/">
           <div className="relative h-20 w-40 cursor-pointer transition">

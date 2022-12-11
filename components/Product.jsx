@@ -4,6 +4,7 @@ import { RiShoppingBasketLine } from 'react-icons/ri'
 import { useDispatch } from 'react-redux'
 import { addToBasket } from '../redux/basketSlice'
 import toast from 'react-hot-toast'
+import Link from 'next/link'
 
 const Product = ({ product }) => {
   const dispatch = useDispatch()
@@ -28,14 +29,18 @@ const Product = ({ product }) => {
       </div>
 
       <div className="pt-3 font-bold">
-        <div className="space-y-2 text-sm text-[#404e65] hover:text-[#56b0f2] md:text-xl">
-          <p>{product.title}</p>
+        <div className="space-y-2 text-sm text-[#404e65] transition-all duration-150 ease-in hover:text-[#56b0f2] md:text-xl">
+          <Link href={`/product/${encodeURIComponent(product.slug.current)}`}>
+            <a>
+              <p>{product.title}</p>
+            </a>
+          </Link>
           <p className="text-[#56b0f2]">{product.price}₴</p>
         </div>
 
         <div
           onClick={addItemToBasket}
-          className="flex h-6 w-6 flex-shrink-0 cursor-pointer items-center justify-center rounded-full bg-gradient-to-r from-pink-500 to-violet-500 md:h-[40px] md:w-[40px]"
+          className="flex h-12 w-12 flex-shrink-0 cursor-pointer items-center justify-center  md:h-[40px] md:w-[40px]"
         >
           <RiShoppingBasketLine />
         </div>

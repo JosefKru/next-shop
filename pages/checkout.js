@@ -2,12 +2,12 @@ import Head from 'next/head'
 import Header from '../components/Header'
 import CheckoutProduct from '../components/CheckoutProduct'
 import Button from '../components/Button'
+import Form from './../components/Form'
 import Currency from 'react-currency-formatter'
 import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import { useEffect, useRef, useState } from 'react'
 import { selectBasketItems, selectBasketTotal } from '../redux/basketSlice'
-import Form from './../components/Form'
 
 const Checkout = () => {
   const basketTotal = useSelector(selectBasketTotal)

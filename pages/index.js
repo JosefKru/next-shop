@@ -24,7 +24,9 @@ function Home({ categories, products }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header />
+      <div className="bg-[#f0f7fd]">
+        <Header />
+      </div>
 
       <Basket />
 
@@ -45,9 +47,9 @@ function Home({ categories, products }) {
                   key={category._id}
                   id={category._id}
                   className={({ selected }) =>
-                    `mx-4 whitespace-nowrap rounded-3xl border-4 py-2 px-5 font-bold focus:outline-none sm:text-xs md:text-base  ${
+                    `mx-4 whitespace-nowrap rounded-3xl border-4 py-2 px-5 font-bold focus:outline-none sm:text-xs md:text-base ${
                       selected
-                        ? 'border-[#56b0f2] text-[#56b0f2] '
+                        ? 'border-[#56b0f2] text-[#56b0f2]'
                         : 'text-[#747474]'
                     }`
                   }

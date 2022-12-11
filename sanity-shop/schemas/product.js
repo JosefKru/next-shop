@@ -7,11 +7,19 @@ export default {
       name: 'title',
       title: 'Title',
       type: 'string',
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      title: 'Meta-title',
+      name: 'metaTitle',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
+      validation: (Rule) => Rule.required(),
       options: {
         source: 'title',
         maxLength: 96,
@@ -21,6 +29,7 @@ export default {
       name: 'image',
       title: 'Image',
       type: 'image',
+      validation: (Rule) => Rule.required(),
       // of: [{ type: 'image' }],
       // options: {
       //   hotspot: true,
@@ -30,6 +39,7 @@ export default {
       name: 'price',
       title: 'Price',
       type: 'number',
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'vendor',
@@ -42,11 +52,13 @@ export default {
       title: 'Category',
       type: 'reference',
       to: [{ type: 'category' }],
+      validation: (Rule) => Rule.required(),
     },
     {
       title: 'Description',
       name: 'description',
       type: 'blockContent',
+      validation: (Rule) => Rule.required(),
     },
   ],
 }
