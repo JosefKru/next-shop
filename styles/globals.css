@@ -24,7 +24,7 @@
     @apply grid grid-cols-2 justify-center gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
   }
   .formInfo {
-    @apply flex w-[400px] flex-col items-start text-base;
+    @apply flex w-[300px] flex-col items-start text-base md:w-[400px];
   }
   .formInput {
     @apply h-[35px] w-[100%] rounded border-2 border-solid p-2 outline-none focus:border-green-500;

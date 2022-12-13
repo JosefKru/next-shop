@@ -101,7 +101,7 @@ const Form = ({ visible, onClose }) => {
           <input
             type="submit"
             value="Buy Now"
-            className="mt-8 w-[100%] cursor-pointer border-none bg-green-500 p-3 text-white"
+            className="mt-8 w-[100%] cursor-pointer border-none bg-gradient-to-r from-[#22c55e] to-[#ff5b4b] p-3 font-bold text-white"
           />
         </form>
       </div>
