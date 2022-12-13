@@ -45,7 +45,7 @@ function Header() {
         <BiSearchAlt className="headerIcon" />
         <Link href="/checkout">
           <div className="relative cursor-pointer">
-            <span className="absolute -right-3 -top-3 z-50 flex h-6 w-6 items-center justify-center rounded-full bg-[#ff5b4b] text-[14px]  font-bold text-white">
+            <span className="absolute -right-3 -top-3 z-10 flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-r from-[#ffb74a] to-[#ff5b4b] text-[14px]  font-bold text-white">
               {items.length}
             </span>
             <HiOutlineShoppingCart className="headerIcon" />

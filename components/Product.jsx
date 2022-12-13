@@ -28,21 +28,32 @@ const Product = ({ product }) => {
         />
       </div>
 
-      <div className="pt-3 font-bold">
-        <div className="space-y-2 text-sm text-[#404e65] transition-all duration-150 ease-in hover:text-[#56b0f2] md:text-xl">
+      <div className="relative pt-3 font-bold">
+        <div className="space-y-2 text-sm text-[#404e65] transition-all duration-200 ease-in hover:text-[#56b0f2] md:text-xl">
           <Link href={`/product/${encodeURIComponent(product.slug.current)}`}>
             <a>
               <p>{product.title}</p>
             </a>
           </Link>
-          <p className="text-[#56b0f2]">{product.price}₴</p>
+          <hr />
+          <p className="absolute top-[80px] left-1 font-extrabold text-[#56b0f2]">
+            {product.price}₴
+          </p>
         </div>
 
         <div
           onClick={addItemToBasket}
-          className="flex h-12 w-12 flex-shrink-0 cursor-pointer items-center justify-center  md:h-[40px] md:w-[40px]"
+          className=" cursor-pointer text-[#56b0f2] transition-all duration-200 hover:text-[#404e65] "
         >
-          <RiShoppingBasketLine />
+          <div className="absolute top-[120px] left-0">
+            <RiShoppingBasketLine
+              size="22"
+              className="bold mr-2 mb-1 inline-block text-lg"
+            />
+            <span className="text-sm font-light md:font-semibold">
+              Add to cart
+            </span>
+          </div>
         </div>
       </div>
     </div>

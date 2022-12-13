@@ -10,10 +10,12 @@ import { useEffect, useRef, useState } from 'react'
 import { selectBasketItems, selectBasketTotal } from '../redux/basketSlice'
 
 const Checkout = () => {
+  const [isVisible, setIsVisible] = useState(false)
   const basketTotal = useSelector(selectBasketTotal)
   const items = useSelector(selectBasketItems)
   const router = useRouter()
   const [groupedItemsInBasket, setGroupedItemsInBasket] = useState({})
+  const handleOnClose = () => setIsVisible(false)
 
   useEffect(() => {
     const groupedItems = items.reduce((results, item) => {
@@ -27,7 +29,8 @@ const Checkout = () => {
   return (
     <div className="min-h-screen overflow-hidden bg-gradient-to-b from-[#f0f7fd]">
       <Head>
-        <title>Bag - Room4mommy</title>
+        <title>Cart | Room4mommy</title>
+        <link href="//fonts.googleapis.com/css?family=Open+Sans%3Aregular%2C500%2C700%2C800%7CFredoka+One%3Aregular%7CMontserrat%3Aregular%2C500%2C700%2C800%26subset%3Dlatin%2Clatin-ext" />
       </Head>
 
       <Header />
@@ -59,7 +62,16 @@ const Checkout = () => {
                     <Currency quantity={basketTotal} currency="UAH" />
                   </p>
                 </div>
-                <Form />
+                <hr />
+                <div className="mt-8 text-center">
+                  <button
+                    className="rounded bg-[#ff5b4b] px-14 py-2 text-base font-bold text-white transition hover:scale-95"
+                    onClick={() => setIsVisible(true)}
+                  >
+                    Checkout
+                  </button>
+                  <Form visible={isVisible} onClose={handleOnClose} />
+                </div>
               </div>
             </div>
           </div>

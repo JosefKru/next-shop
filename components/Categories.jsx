@@ -2,13 +2,13 @@ import { Tab } from '@headlessui/react'
 import Product from './Product'
 
 const Categories = ({ categories, products }) => {
-    const showProducts = (category) => {
-        return products
-          .filter((product) => product.category._ref === categories[category]._id)
-          .map((product) => (
-            <Product {...product} product={product} key={product._id} />
-          ))
-      }
+  const showProducts = (category) => {
+    return products
+      .filter((product) => product.category._ref === categories[category]._id)
+      .map((product) => (
+        <Product {...product} product={product} key={product._id} />
+      ))
+  }
   return (
     <div className="space-y-10 py-16">
       <h1 className="text-center text-4xl font-bold tracking-wide text-[#404e65] md:text-5xl">
@@ -44,13 +44,3 @@ const Categories = ({ categories, products }) => {
 }
 
 export default Categories
-
-
-export const getServerSideProps = async () => {
-
-    return {
-        props: {
-
-        }
-    }
-}
