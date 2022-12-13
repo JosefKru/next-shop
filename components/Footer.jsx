@@ -1,7 +1,6 @@
 import Image from 'next/image'
 
 const Footer = ({ categories = [] }) => {
-  console.log(categories)
   return (
     <div className="lg:mx-20">
       <div className="flex flex-row justify-around bg-[#eff8ff] p-14">

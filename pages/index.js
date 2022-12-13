@@ -13,7 +13,7 @@ function Home({ categories, products }) {
     <div>
       <Head>
         <title>Room 4 mommy</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
 
       <div className="bg-[#f0f7fd]">

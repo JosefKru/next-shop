@@ -78,7 +78,7 @@ const Checkout = () => {
                 <hr />
                 <div className="mt-8 text-center">
                   <button
-                    className="rounded bg-gradient-to-t from-[#ffb74a] to-[#ff5b4b] px-14 py-2 text-base font-bold text-white transition hover:scale-95"
+                    className="rounded bg-gradient-to-t from-[#ffb74a] to-[#ff5b4b] px-14 py-2 text-base font-bold text-white transition active:scale-95"
                     onClick={() => setIsVisible(true)}
                   >
                     Checkout

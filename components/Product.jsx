@@ -1,10 +1,10 @@
 import Image from 'next/image'
+import Link from 'next/link'
+import toast from 'react-hot-toast'
 import { urlFor } from '../lib/client'
 import { RiShoppingBasketLine } from 'react-icons/ri'
 import { useDispatch } from 'react-redux'
 import { addToBasket } from '../redux/basketSlice'
-import toast from 'react-hot-toast'
-import Link from 'next/link'
 
 const Product = ({ product }) => {
   const dispatch = useDispatch()
