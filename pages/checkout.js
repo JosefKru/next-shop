@@ -8,6 +8,8 @@ import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import { useEffect, useRef, useState } from 'react'
 import { selectBasketItems, selectBasketTotal } from '../redux/basketSlice'
+import Footer from '../components/Footer'
+import Image from 'next/image'
 
 const Checkout = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -27,25 +29,36 @@ const Checkout = () => {
   }, [items])
 
   return (
-    <div className="min-h-screen overflow-hidden bg-gradient-to-b from-[#f0f7fd]">
+    <div className="min-h-screen overflow-hidden">
       <Head>
         <title>Cart | Room4mommy</title>
-        <link href="//fonts.googleapis.com/css?family=Open+Sans%3Aregular%2C500%2C700%2C800%7CFredoka+One%3Aregular%7CMontserrat%3Aregular%2C500%2C700%2C800%26subset%3Dlatin%2Clatin-ext" />
       </Head>
 
       <Header />
 
       <main className="mx-auto max-w-5xl pb-24">
-        <div className="px-5 ">
-          <h1 className="my-4 text-3xl font-semibold lg:text-4xl">
-            {items.length > 0 ? 'Review your bag' : 'Your bag is empt'}
+        <div className="flex flex-col items-center justify-center">
+          <h1 className="my-4 text-3xl font-extrabold text-[#404e65] lg:text-4xl">
+            {items.length > 0 ? 'Review your cart' : 'Cart'}
           </h1>
-
           {items.length === 0 && (
-            <Button
-              title="Continue Shopping"
-              onClick={() => router.push('/')}
-            />
+            <>
+              <div className="relative h-72 w-72">
+                <Image
+                  src="/empty-cart.png"
+                  layout="fill"
+                  objectFit="contain"
+                  alt="empty cart"
+                />
+              </div>
+              <p className="mb-12 text-xl font-bold text-[#404e65]">
+                Your cart is currently empty.
+              </p>
+              <Button
+                title="Continue Shopping"
+                onClick={() => router.push('/')}
+              />
+            </>
           )}
         </div>
 
@@ -77,6 +90,9 @@ const Checkout = () => {
           </div>
         )}
       </main>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   )
 }

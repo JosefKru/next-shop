@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Header from './../../components/Header'
 import { client } from '../../lib/client'
+
 const ProductPage = ({ product }) => {
   return (
     <>
@@ -35,9 +36,16 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params: { slug } }) {
-  const query = `*[_type == "product" && slug.current == '${slug}'][0]`
+export async function getStaticProps({ params: { slug }, req }) {
+  if (!req) {
+    return {
+      props: {
+        product: null,
+      },
+    }
+  }
 
+  const query = `*[_type == "product" && slug.current == '${slug}'][0]`
   const product = await client.fetch(query)
 
   return {

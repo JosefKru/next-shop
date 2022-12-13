@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+import NextNProgress from 'nextjs-progressbar'
 import { Provider } from 'react-redux'
 import { store } from '../redux/store'
 import { Toaster } from 'react-hot-toast'
@@ -9,6 +10,13 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
     <SessionProvider session={session}>
       <Provider store={store}>
         <Toaster />
+        <NextNProgress
+          color="#29D"
+          startPosition={0.3}
+          stopDelayMs={200}
+          height={3}
+          showOnShallow={true}
+        />
         <Component {...pageProps} />
       </Provider>
     </SessionProvider>

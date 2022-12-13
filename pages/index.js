@@ -30,7 +30,7 @@ function Home({ categories, products }) {
         <Categories categories={categories} products={products} />
       </section>
 
-      <footer className="bg-[#eff8ff]">
+      <footer>
         <Footer categories={categories} />
       </footer>
     </div>
