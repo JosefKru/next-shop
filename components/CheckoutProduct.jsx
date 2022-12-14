@@ -4,7 +4,7 @@ import toast from 'react-hot-toast'
 import { urlFor } from '../lib/client'
 import { GrFormDown } from 'react-icons/gr'
 import { useDispatch } from 'react-redux'
-import { removeFromBasket } from '../redux/basketSlice'
+import { removeFromBasket, setProductLength } from '../redux/basketSlice'
 
 const CheckoutProduct = ({ items, id }) => {
   const dispatch = useDispatch()
@@ -37,7 +37,6 @@ const CheckoutProduct = ({ items, id }) => {
               <GrFormDown className="h-6 w-6" color="blue" />
             </p>
           </div>
-
           <p className="flex cursor-pointer items-end text-blue-500 hover:underline">
             Show product details
             <GrFormDown className="h-6 w-6" color="#56b0f2" />

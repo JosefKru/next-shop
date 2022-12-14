@@ -5,16 +5,18 @@ import Header from './../../components/Header'
 import { client, urlFor } from '../../lib/client'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { useDispatch } from 'react-redux'
-import { addToBasket } from '../../redux/basketSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { addToBasket, selectBasketItems } from '../../redux/basketSlice'
 import { toast } from 'react-hot-toast'
-import { fetchCategories } from '../../utils/fetchCategories'
 
 const ProductPage = ({ product: serverPost }) => {
   const [product, setProduct] = useState(serverPost)
-  const [category, setCategory] = useState(null)
+
   const router = useRouter()
   const dispatch = useDispatch()
+  const items = useSelector(selectBasketItems)
+
+  const itemsGroup = items.filter((item) => item._id === product?._id)
 
   useEffect(() => {
     async function load() {
@@ -27,7 +29,7 @@ const ProductPage = ({ product: serverPost }) => {
     if (!serverPost) {
       load()
     }
-  }, [])
+  }, [items, serverPost, router.query.slug])
 
   const addItemToBasket = () => {
     dispatch(addToBasket(product))
@@ -44,7 +46,6 @@ const ProductPage = ({ product: serverPost }) => {
     <>
       <Head>
         <title>{product.metaTitle}</title>
-        {/* добавить все метатайтлы в сайнити */}
       </Head>
       <Header />
       <div className="my-8 flex flex-row justify-evenly">
@@ -66,9 +67,15 @@ const ProductPage = ({ product: serverPost }) => {
             {product.price}₴
           </h1>
           <div>
+            <div className="mr-8 inline-flex justify-start rounded border px-10 py-2">
+              <span className="text-base">-</span>
+
+              <span className="">{itemsGroup.length}</span>
+              <span>+</span>
+            </div>
             <button
               onClick={addItemToBasket}
-              className="rounded bg-gradient-to-t from-[#ffb74a] to-[#ff5b4b] px-24 py-2 text-base font-bold text-white transition active:scale-95"
+              className="inline-block rounded bg-gradient-to-t from-[#ffb74a] to-[#ff5b4b] px-24 py-2 text-base font-bold text-white transition active:scale-95"
             >
               Add to cart
             </button>

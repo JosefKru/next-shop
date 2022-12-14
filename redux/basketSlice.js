@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   items: [],
+  productLength: 0,
 }
 
 export const basketSlice = createSlice({
@@ -31,15 +32,24 @@ export const basketSlice = createSlice({
     },
   },
 
-  removeAllFromBasket: (state, action) => {},
+  setProductLength: (state, action) => {
+    state.productLength = action.payload
+  },
+
+  // removeAllFromBasket: (state, action) => {},
 })
 
 // Action creators
-export const { addToBasket, removeFromBasket, removeAllFromBasket } =
-  basketSlice.actions
+export const {
+  addToBasket,
+  removeFromBasket,
+  removeAllFromBasket,
+  setProductLength,
+} = basketSlice.actions
 
 // Selectors
 export const selectBasketItems = (state) => state.basket.items
+export const selectProductLength = (state) => state.basket.productLength
 export const selectBasketItemsWithId = (state, id) =>
   state.basket.items.filter((item) => item._id === id)
 export const selectBasketTotal = (state) =>
