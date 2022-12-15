@@ -11,11 +11,9 @@ import { toast } from 'react-hot-toast'
 
 const ProductPage = ({ product: serverPost }) => {
   const [product, setProduct] = useState(serverPost)
-
   const router = useRouter()
   const dispatch = useDispatch()
   const items = useSelector(selectBasketItems)
-
   const itemsGroup = items.filter((item) => item._id === product?._id)
 
   useEffect(() => {
@@ -67,11 +65,11 @@ const ProductPage = ({ product: serverPost }) => {
             {product.price}₴
           </h1>
           <div>
-            <div className="mr-8 inline-flex justify-start rounded border px-10 py-2">
-              <span className="text-base">-</span>
+            <div className="mr-4 flex justify-between rounded border px-10 py-2">
+              <span className="">-</span>
 
               <span className="">{itemsGroup.length}</span>
-              <span>+</span>
+              <span className="">+</span>
             </div>
             <button
               onClick={addItemToBasket}
