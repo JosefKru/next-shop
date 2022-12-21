@@ -19,14 +19,16 @@ const Product = ({ product }) => {
 
   return (
     <div className="h-[305px] w-40 select-none rounded-xl border-2 bg-[#ffffff] p-6 md:h-[395px] md:w-[262px]">
-      <div className="relative h-28 w-28 md:h-52 md:w-52">
-        <Image
-          src={urlFor(product.image).width(210).height(210).url()}
-          layout="fill"
-          objectFit="contain"
-          alt=""
-        />
-      </div>
+      <Link href={`/product/${encodeURIComponent(product.slug.current)}`}>
+        <div className="relative h-28 w-28 cursor-pointer md:h-52 md:w-52">
+          <Image
+            src={urlFor(product.image).width(210).height(210).url()}
+            layout="fill"
+            objectFit="contain"
+            alt=""
+          />
+        </div>
+      </Link>
 
       <div className="relative pt-3 font-bold">
         <div className="space-y-2 text-sm text-[#404e65] transition-all duration-200 ease-in hover:text-[#56b0f2] md:text-xl">

@@ -4,7 +4,7 @@ import toast from 'react-hot-toast'
 import { urlFor } from '../lib/client'
 import { GrFormDown } from 'react-icons/gr'
 import { useDispatch } from 'react-redux'
-import { removeFromBasket, setProductLength } from '../redux/basketSlice'
+import { removeFromBasket } from '../redux/basketSlice'
 
 const CheckoutProduct = ({ items, id }) => {
   const dispatch = useDispatch()

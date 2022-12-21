@@ -1,24 +1,23 @@
 import Head from 'next/head'
 import Footer from '../../components/Footer'
 import Image from 'next/image'
+import Description from '../../components/Description'
 import Header from './../../components/Header'
 import { client, urlFor } from '../../lib/client'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-  addToBasket,
-  removeFromBasket,
-  selectBasketItems,
-} from '../../redux/basketSlice'
+import { addToBasket, selectBasketItems } from '../../redux/basketSlice'
 import { toast } from 'react-hot-toast'
 
-const ProductPage = ({ product: serverPost }) => {
-  const [product, setProduct] = useState(serverPost)
+const ProductPage = ({ product: serverProduct }) => {
+  const [product, setProduct] = useState(serverProduct)
   const router = useRouter()
   const dispatch = useDispatch()
   const items = useSelector(selectBasketItems)
   const itemsGroup = items.filter((item) => item._id === product?._id)
+
+  console.log(product)
 
   useEffect(() => {
     async function load() {
@@ -28,10 +27,10 @@ const ProductPage = ({ product: serverPost }) => {
       setProduct(data)
     }
 
-    if (!serverPost) {
+    if (!serverProduct) {
       load()
     }
-  }, [items, serverPost, router.query.slug])
+  }, [items, serverProduct, router.query.slug])
 
   const addItemToBasket = () => {
     dispatch(addToBasket(product))
@@ -41,17 +40,6 @@ const ProductPage = ({ product: serverPost }) => {
     })
   }
 
-  const removeItemFromBusket = () => {
-    dispatch(removeFromBasket(product))
-
-    toast.error(`${product.title} removed from basket`, {
-      position: 'bottom-center',
-    })
-  }
-
-  if (!product) {
-    return <p>loading</p>
-  }
   return (
     <>
       <Head>
@@ -72,19 +60,14 @@ const ProductPage = ({ product: serverPost }) => {
           <h1 className="p-2 text-3xl font-bold text-[#404e65] md:text-5xl">
             {product.title}
           </h1>
-          <p className="hidden h-60 p-2 md:block">DESCRIPTION FROM SANITY</p>
+          <Description body={product.description} />
           <h1 className="p-2 text-3xl font-extrabold text-[#ff5b4b] ">
             {product.price}₴
           </h1>
           <div>
             <div className="flex flex-row">
               <div className="mr-4 flex w-24 flex-row items-center justify-around rounded border py-2">
-                <span
-                  className="cursor-pointer text-xl opacity-70"
-                  onClick={removeItemFromBusket}
-                >
-                  -
-                </span>
+                <span className="cursor-pointer text-xl opacity-70">-</span>
                 <span className="text-xl">{itemsGroup.length}</span>
                 <span
                   className="cursor-pointer text-xl opacity-70"
@@ -107,7 +90,7 @@ const ProductPage = ({ product: serverPost }) => {
             DESCRIPTION
           </div>
 
-          <p className="">DESCRIPTION FROM SANITY</p>
+          <Description body={product.description} />
         </div>
       </div>
 
@@ -138,15 +121,7 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params: { slug }, req }) {
-  if (!req) {
-    return {
-      props: {
-        product: null,
-      },
-    }
-  }
-
+export async function getStaticProps({ params: { slug } }) {
   const query = `*[_type == "product" && slug.current == '${slug}'][0]`
   const product = await client.fetch(query)
 

@@ -159,7 +159,7 @@
     "hyperscript" "^2.0.2"
     "object-assign" "^4.1.1"
 
-"@sanity/block-content-to-react@3.0.0":
+"@sanity/block-content-to-react@^3.0.0":
   "integrity" "sha512-oHPLlIsulsnL3ITs93RIvUPBI6nAeoSFOUf16vX4T7z4wWywxP39N1DF9mAx2tV6Kjr1fJAx5GF7zfiMXYLaqA=="
   "resolved" "https://registry.npmjs.org/@sanity/block-content-to-react/-/block-content-to-react-3.0.0.tgz"
   "version" "3.0.0"
