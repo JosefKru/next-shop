@@ -6,7 +6,11 @@ import { client, urlFor } from '../../lib/client'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
-import { addToBasket, selectBasketItems } from '../../redux/basketSlice'
+import {
+  addToBasket,
+  removeFromBasket,
+  selectBasketItems,
+} from '../../redux/basketSlice'
 import { toast } from 'react-hot-toast'
 
 const ProductPage = ({ product: serverPost }) => {
@@ -37,6 +41,14 @@ const ProductPage = ({ product: serverPost }) => {
     })
   }
 
+  const removeItemFromBusket = () => {
+    dispatch(removeFromBasket(product))
+
+    toast.error(`${product.title} removed from basket`, {
+      position: 'bottom-center',
+    })
+  }
+
   if (!product) {
     return <p>loading</p>
   }
@@ -46,8 +58,9 @@ const ProductPage = ({ product: serverPost }) => {
         <title>{product.metaTitle}</title>
       </Head>
       <Header />
-      <div className="my-8 flex flex-row justify-evenly">
-        <div className="relative h-[555px] w-[555px]">
+
+      <div className="mt-10 flex flex-col items-center justify-evenly md:mb-72 md:ml-8 md:flex-row">
+        <div className="relative h-[360px] w-[360px] md:h-[555px] md:w-[555px]">
           <Image
             src={urlFor(product.image).width(200).height(200).url()}
             layout="fill"
@@ -55,31 +68,49 @@ const ProductPage = ({ product: serverPost }) => {
             alt=""
           />
         </div>
-        <div className="flex flex-col justify-evenly">
-          <h1 className="text-5xl font-bold text-[#404e65]">{product.title}</h1>
-          <p>
-            Perk up imaginary play with this single-serve coffee maker. Do you
-            take milk or sugar?
-          </p>
-          <h1 className="text-3xl font-extrabold text-[#ff5b4b]">
+        <div className="flex flex-col p-4 md:w-[460px]">
+          <h1 className="p-2 text-3xl font-bold text-[#404e65] md:text-5xl">
+            {product.title}
+          </h1>
+          <p className="hidden h-60 p-2 md:block">DESCRIPTION FROM SANITY</p>
+          <h1 className="p-2 text-3xl font-extrabold text-[#ff5b4b] ">
             {product.price}₴
           </h1>
           <div>
-            <div className="mr-4 flex justify-between rounded border px-10 py-2">
-              <span className="">-</span>
-
-              <span className="">{itemsGroup.length}</span>
-              <span className="">+</span>
+            <div className="flex flex-row">
+              <div className="mr-4 flex w-24 flex-row items-center justify-around rounded border py-2">
+                <span
+                  className="cursor-pointer text-xl opacity-70"
+                  onClick={removeItemFromBusket}
+                >
+                  -
+                </span>
+                <span className="text-xl">{itemsGroup.length}</span>
+                <span
+                  className="cursor-pointer text-xl opacity-70"
+                  onClick={addItemToBasket}
+                >
+                  +
+                </span>
+              </div>
+              <button
+                onClick={addItemToBasket}
+                className="inline-block rounded bg-gradient-to-t from-[#ffb74a] to-[#ff5b4b] px-12 py-2 text-base font-bold text-white transition active:scale-95 md:px-24"
+              >
+                Add to cart
+              </button>
             </div>
-            <button
-              onClick={addItemToBasket}
-              className="inline-block rounded bg-gradient-to-t from-[#ffb74a] to-[#ff5b4b] px-24 py-2 text-base font-bold text-white transition active:scale-95"
-            >
-              Add to cart
-            </button>
           </div>
         </div>
+        <div className="my-24 flex flex-col items-center justify-center md:hidden">
+          <div className="mb-8 w-36 rounded-3xl border-4 border-[#56b0f2] py-2 px-5 text-sm font-bold text-[#56b0f2] md:text-base">
+            DESCRIPTION
+          </div>
+
+          <p className="">DESCRIPTION FROM SANITY</p>
+        </div>
       </div>
+
       <Footer />
     </>
   )
