@@ -11,13 +11,12 @@ import { addToBasket, selectBasketItems } from '../../redux/basketSlice'
 import { toast } from 'react-hot-toast'
 
 const ProductPage = ({ product: serverProduct }) => {
+  const [productAmount, setProductAmount] = useState(1)
   const [product, setProduct] = useState(serverProduct)
   const router = useRouter()
   const dispatch = useDispatch()
   const items = useSelector(selectBasketItems)
-  const itemsGroup = items.filter((item) => item._id === product?._id)
-
-  console.log(product)
+  // const itemsGroup = items.filter((item) => item._id === product?._id)
 
   useEffect(() => {
     async function load() {
@@ -67,14 +66,21 @@ const ProductPage = ({ product: serverProduct }) => {
           <div>
             <div className="flex flex-row">
               <div className="mr-4 flex w-24 flex-row items-center justify-around rounded border py-2">
-                <span className="cursor-pointer text-xl opacity-70">-</span>
-                <span className="text-xl">{itemsGroup.length}</span>
-                <span
-                  className="cursor-pointer text-xl opacity-70"
-                  onClick={addItemToBasket}
+                <button
+                  onClick={() => setProductAmount(productAmount - 1)}
+                  className={`cursor-pointer divide-slate-400 text-xl font-bold opacity-50 hover:opacity-80`}
+                  disabled={!productAmount}
+                >
+                  -
+                </button>
+                {/* <span className="text-xl">{itemsGroup.length}</span> */}
+                <span className="text-xl">{productAmount}</span>
+                <button
+                  className="cursor-pointer text-xl font-bold opacity-50 hover:opacity-80"
+                  onClick={() => setProductAmount(productAmount + 1)}
                 >
                   +
-                </span>
+                </button>
               </div>
               <button
                 onClick={addItemToBasket}
