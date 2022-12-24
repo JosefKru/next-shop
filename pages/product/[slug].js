@@ -55,12 +55,12 @@ const ProductPage = ({ product: serverProduct }) => {
             alt=""
           />
         </div>
-        <div className="flex flex-col p-4 md:w-[460px]">
-          <h1 className="p-2 text-3xl font-bold text-[#404e65] md:text-5xl">
+        <div className="flex flex-col p-4 md:w-[460px] ">
+          <h1 className="pb-6 text-3xl font-bold text-[#404e65] md:text-5xl">
             {product.title}
           </h1>
           <Description body={product.description} />
-          <h1 className="p-2 text-3xl font-extrabold text-[#ff5b4b] ">
+          <h1 className="pb-6 text-3xl font-extrabold text-[#ff5b4b]">
             {product.price}₴
           </h1>
           <div>
@@ -68,8 +68,10 @@ const ProductPage = ({ product: serverProduct }) => {
               <div className="mr-4 flex w-24 flex-row items-center justify-around rounded border py-2">
                 <button
                   onClick={() => setProductAmount(productAmount - 1)}
-                  className={`cursor-pointer divide-slate-400 text-xl font-bold opacity-50 hover:opacity-80`}
-                  disabled={!productAmount}
+                  className={`cursor-pointer divide-slate-400 text-xl font-bold opacity-50 hover:opacity-80 ${
+                    productAmount <= 1 && 'opacity-40 hover:opacity-40'
+                  }`}
+                  disabled={productAmount <= 1}
                 >
                   -
                 </button>
@@ -84,7 +86,7 @@ const ProductPage = ({ product: serverProduct }) => {
               </div>
               <button
                 onClick={addItemToBasket}
-                className="inline-block rounded bg-gradient-to-t from-[#ffb74a] to-[#ff5b4b] px-12 py-2 text-base font-bold text-white transition active:scale-95 md:px-24"
+                className="inline-block rounded bg-gradient-to-t from-[#ffb74a] to-[#ff5b4b] px-6 py-2 text-base font-bold text-white transition active:scale-95"
               >
                 Add to cart
               </button>

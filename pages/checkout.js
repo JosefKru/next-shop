@@ -39,7 +39,7 @@ const Checkout = () => {
       <main className="mx-auto max-w-5xl pb-24">
         <div className="flex flex-col items-center justify-center">
           <h1 className="my-4 text-3xl font-extrabold text-[#404e65] lg:text-4xl">
-            {items.length > 0 ? 'Review your cart' : 'Cart'}
+            Checkout
           </h1>
           {items.length === 0 && (
             <>
@@ -78,7 +78,7 @@ const Checkout = () => {
                 <hr />
                 <div className="mt-8 text-center">
                   <button
-                    className="rounded bg-gradient-to-t from-[#ffb74a] to-[#ff5b4b] px-14 py-2 text-base font-bold text-white transition active:scale-95"
+                    className="rounded bg-gradient-to-t from-[#ffb74a] to-[#ff5b4b] px-8 py-2 text-base font-bold text-white transition active:scale-95"
                     onClick={() => setIsVisible(true)}
                   >
                     Checkout

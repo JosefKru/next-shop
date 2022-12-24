@@ -12,8 +12,9 @@ const Description = ({ body }) => {
       ),
     },
   }
+
   return (
-    <div className="">
+    <div className="basis-64 pb-6">
       <SanityBlockContent
         blocks={body}
         imageOptions={{ w: 1000, h: 750, fit: 'max' }}
