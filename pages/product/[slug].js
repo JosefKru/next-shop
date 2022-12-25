@@ -12,7 +12,7 @@ import { toast } from 'react-hot-toast'
 import { AiFillCaretDown, AiFillCaretUp } from 'react-icons/ai'
 import ImageSlider from '../../components/ImageSlider'
 
-const ProductPage = ({ product: serverProduct, imageGallery}) => {
+const ProductPage = ({ product: serverProduct, imageGallery }) => {
   const [isOpen, setIsOpen] = useState(true)
   const [productAmount, setProductAmount] = useState(1)
   const [product, setProduct] = useState(serverProduct)
@@ -20,9 +20,6 @@ const ProductPage = ({ product: serverProduct, imageGallery}) => {
   const dispatch = useDispatch()
   const items = useSelector(selectBasketItems)
   // const itemsGroup = items.filter((item) => item._id === product?._id)
-
-  console.log(product.image, 'image');
- 
 
   useEffect(() => {
     async function load() {
@@ -52,31 +49,23 @@ const ProductPage = ({ product: serverProduct, imageGallery}) => {
       </Head>
       <Header />
 
-      <div className="mt-10 flex flex-col items-center justify-evenly md:mb-72 md:ml-8 md:flex-row">
-        <div className='h-[360px] w-[360px] md:h-[555px] md:w-[555px]'>
-          <ImageSlider imageGallery={imageGallery} product={product}/>
+      <div className='mt-10 flex flex-col items-center justify-evenly md:mb-72 md:ml-8 md:flex-row'>
+        <div className='h-[360px] w-[360px] select-none md:h-[555px] md:w-[555px]'>
+          <ImageSlider imageGallery={imageGallery} product={product} />
         </div>
-        {/* <div className="relative h-[360px] w-[360px] md:h-[555px] md:w-[555px]">
-          <Image
-            src={urlFor(product.image[0]).width(200).height(200).url()}
-            layout="fill"
-            objectFit="contain"
-            alt=""
-          />
-        </div> */}
-        <div className="mt-6 flex flex-col p-4 md:w-[460px] ">
-          <h1 className="pb-6 text-3xl font-bold text-[#404e65] md:text-5xl">
+        <div className='mt-6 flex flex-col p-4 md:w-[460px] '>
+          <h1 className='pb-6 text-3xl font-bold text-[#404e65] md:text-5xl'>
             {product.title}
           </h1>
-          <div className="hidden md:block h-72">
+          <div className='hidden h-72 md:block'>
             <Description body={product.description} />
           </div>
-          <h1 className="pb-6 text-3xl font-extrabold text-[#ff5b4b]">
+          <h1 className='pb-6 text-3xl font-extrabold text-[#ff5b4b]'>
             {product.price}₴
           </h1>
           <div>
-            <div className="flex flex-row">
-              <div className="mr-4 flex w-24 flex-row items-center justify-around rounded border py-2">
+            <div className='flex flex-row'>
+              <div className='mr-4 flex w-24 flex-row items-center justify-around rounded border py-2'>
                 <button
                   onClick={() => setProductAmount(productAmount - 1)}
                   className={`cursor-pointer divide-slate-400 text-xl font-bold opacity-50 hover:opacity-80 ${
@@ -87,9 +76,9 @@ const ProductPage = ({ product: serverProduct, imageGallery}) => {
                   -
                 </button>
                 {/* <span className="text-xl">{itemsGroup.length}</span> */}
-                <span className="text-xl">{productAmount}</span>
+                <span className='text-xl'>{productAmount}</span>
                 <button
-                  className="cursor-pointer text-xl font-bold opacity-50 hover:opacity-80"
+                  className='cursor-pointer text-xl font-bold opacity-50 hover:opacity-80'
                   onClick={() => setProductAmount(productAmount + 1)}
                 >
                   +
@@ -97,29 +86,29 @@ const ProductPage = ({ product: serverProduct, imageGallery}) => {
               </div>
               <button
                 onClick={addItemToBasket}
-                className="inline-block rounded bg-gradient-to-t from-[#ffb74a] to-[#ff5b4b] px-6 py-2 text-base font-bold text-white transition active:scale-95"
+                className='inline-block rounded bg-gradient-to-t from-[#ffb74a] to-[#ff5b4b] px-6 py-2 text-base font-bold text-white transition active:scale-95'
               >
                 Add to cart
               </button>
             </div>
           </div>
         </div>
-        <div className="my-24 flex flex-col items-center justify-center md:hidden">
+        <div className='my-24 flex flex-col items-center justify-center md:hidden'>
           <div
             onClick={() => setIsOpen(!isOpen)}
-            className="relative mb-8 w-[170px] rounded-3xl border-4 border-[#56b0f2] py-2 px-5 text-sm font-bold text-[#56b0f2] md:text-base"
+            className='relative mb-8 w-[170px] rounded-3xl border-4 border-[#56b0f2] py-2 px-5 text-sm font-bold text-[#56b0f2] md:text-base'
           >
             DESCRIPTION
-            <span className="absolute top-[10px] left-[125px] inline-block">
+            <span className='absolute top-[10px] left-[125px] inline-block'>
               {isOpen ? (
-                <AiFillCaretUp size="15" />
+                <AiFillCaretUp size='15' />
               ) : (
-                <AiFillCaretDown size="15" />
+                <AiFillCaretDown size='15' />
               )}
             </span>
           </div>
           {isOpen && (
-            <div className="px-8">
+            <div className='px-8'>
               <Description body={product.description} />
             </div>
           )}
@@ -167,7 +156,7 @@ export async function getStaticProps({ params: { slug } }) {
   return {
     props: {
       product,
-      imageGallery
+      imageGallery,
     },
   }
 }
