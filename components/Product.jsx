@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux'
 import { addToBasket } from '../redux/basketSlice'
 
 const Product = ({ product }) => {
+  console.log(product.image)
   const dispatch = useDispatch()
 
   const addItemToBasket = () => {
@@ -22,7 +23,7 @@ const Product = ({ product }) => {
       <Link href={`/product/${encodeURIComponent(product.slug.current)}`}>
         <div className="relative h-28 w-28 cursor-pointer md:h-52 md:w-52">
           <Image
-            src={urlFor(product.image).width(210).height(210).url()}
+            src={urlFor(product.image[0]).width(210).height(210).url()}
             layout="fill"
             objectFit="contain"
             alt=""

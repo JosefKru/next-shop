@@ -9,14 +9,20 @@ import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToBasket, selectBasketItems } from '../../redux/basketSlice'
 import { toast } from 'react-hot-toast'
+import { AiFillCaretDown, AiFillCaretUp } from 'react-icons/ai'
+import ImageSlider from '../../components/ImageSlider'
 
-const ProductPage = ({ product: serverProduct }) => {
+const ProductPage = ({ product: serverProduct, imageGallery}) => {
+  const [isOpen, setIsOpen] = useState(true)
   const [productAmount, setProductAmount] = useState(1)
   const [product, setProduct] = useState(serverProduct)
   const router = useRouter()
   const dispatch = useDispatch()
   const items = useSelector(selectBasketItems)
   // const itemsGroup = items.filter((item) => item._id === product?._id)
+
+  console.log(product.image, 'image');
+ 
 
   useEffect(() => {
     async function load() {
@@ -47,19 +53,24 @@ const ProductPage = ({ product: serverProduct }) => {
       <Header />
 
       <div className="mt-10 flex flex-col items-center justify-evenly md:mb-72 md:ml-8 md:flex-row">
-        <div className="relative h-[360px] w-[360px] md:h-[555px] md:w-[555px]">
+        <div className='h-[360px] w-[360px] md:h-[555px] md:w-[555px]'>
+          <ImageSlider imageGallery={imageGallery} product={product}/>
+        </div>
+        {/* <div className="relative h-[360px] w-[360px] md:h-[555px] md:w-[555px]">
           <Image
-            src={urlFor(product.image).width(200).height(200).url()}
+            src={urlFor(product.image[0]).width(200).height(200).url()}
             layout="fill"
             objectFit="contain"
             alt=""
           />
-        </div>
-        <div className="flex flex-col p-4 md:w-[460px] ">
+        </div> */}
+        <div className="mt-6 flex flex-col p-4 md:w-[460px] ">
           <h1 className="pb-6 text-3xl font-bold text-[#404e65] md:text-5xl">
             {product.title}
           </h1>
-          <Description body={product.description} />
+          <div className="hidden md:block h-72">
+            <Description body={product.description} />
+          </div>
           <h1 className="pb-6 text-3xl font-extrabold text-[#ff5b4b]">
             {product.price}₴
           </h1>
@@ -94,11 +105,24 @@ const ProductPage = ({ product: serverProduct }) => {
           </div>
         </div>
         <div className="my-24 flex flex-col items-center justify-center md:hidden">
-          <div className="mb-8 w-36 rounded-3xl border-4 border-[#56b0f2] py-2 px-5 text-sm font-bold text-[#56b0f2] md:text-base">
+          <div
+            onClick={() => setIsOpen(!isOpen)}
+            className="relative mb-8 w-[170px] rounded-3xl border-4 border-[#56b0f2] py-2 px-5 text-sm font-bold text-[#56b0f2] md:text-base"
+          >
             DESCRIPTION
+            <span className="absolute top-[10px] left-[125px] inline-block">
+              {isOpen ? (
+                <AiFillCaretUp size="15" />
+              ) : (
+                <AiFillCaretDown size="15" />
+              )}
+            </span>
           </div>
-
-          <Description body={product.description} />
+          {isOpen && (
+            <div className="px-8">
+              <Description body={product.description} />
+            </div>
+          )}
         </div>
       </div>
 
@@ -132,10 +156,18 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params: { slug } }) {
   const query = `*[_type == "product" && slug.current == '${slug}'][0]`
   const product = await client.fetch(query)
+  const imageGallery = await client.fetch(`*[_type == 'product'] {
+    _id,
+    title,
+    image[]{
+     asset->{url}
+    }
+  }`)
 
   return {
     props: {
       product,
+      imageGallery
     },
   }
 }

@@ -2,7 +2,6 @@ import SanityBlockContent from '@sanity/block-content-to-react'
 import { config } from '../lib/client'
 
 const Description = ({ body }) => {
-  console.log(body)
   const serializers = {
     types: {
       code: (props) => (
@@ -14,7 +13,7 @@ const Description = ({ body }) => {
   }
 
   return (
-    <div className="basis-64 pb-6">
+    <div className=" pb-6">
       <SanityBlockContent
         blocks={body}
         imageOptions={{ w: 1000, h: 750, fit: 'max' }}

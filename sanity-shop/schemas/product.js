@@ -28,13 +28,22 @@ export default {
     {
       name: 'image',
       title: 'Image',
-      type: 'image',
+      type: 'array',
+      of: [{ type: 'image' }],
+      options: {
+        hotspot: true,
+      },
       validation: (Rule) => Rule.required(),
-      // of: [{ type: 'image' }],
-      // options: {
-      //   hotspot: true,
-      // },
     },
+    // {
+    //   name: 'image',
+    //   title: 'Image',
+    //   type: 'array',
+    //   of: [{ type: 'image', 
+    //   options: {
+    //     hotspot: true,
+    //   },}]
+    //  },
     {
       name: 'price',
       title: 'Price',
