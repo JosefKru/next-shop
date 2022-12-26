@@ -35,15 +35,6 @@ export default {
       },
       validation: (Rule) => Rule.required(),
     },
-    // {
-    //   name: 'image',
-    //   title: 'Image',
-    //   type: 'array',
-    //   of: [{ type: 'image', 
-    //   options: {
-    //     hotspot: true,
-    //   },}]
-    //  },
     {
       name: 'price',
       title: 'Price',

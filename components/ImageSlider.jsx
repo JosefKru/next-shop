@@ -24,7 +24,7 @@ const ImageSlider = ({ imageGallery, product }) => {
     setCUrrentIndex(newIndex)
   }
 
-  const goToS3ide = (slideIndex) => {
+  const goToSlide = (slideIndex) => {
     setCUrrentIndex(slideIndex)
   }
 
