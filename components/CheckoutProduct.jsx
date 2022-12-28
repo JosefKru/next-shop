@@ -5,9 +5,9 @@ import { urlFor } from '../lib/client'
 import { GrFormDown } from 'react-icons/gr'
 import { useDispatch } from 'react-redux'
 import { removeFromBasket } from '../redux/basketSlice'
+import Link from 'next/link'
 
 const CheckoutProduct = ({ items, id }) => {
-  console.log(items)
   const dispatch = useDispatch()
 
   const removeItemFromBasket = () => {
@@ -21,18 +21,28 @@ const CheckoutProduct = ({ items, id }) => {
   return (
     <div className='flex flex-col gap-x-4 border-b border-gray-300 py-5 lg:flex-row lg:items-center'>
       <div className='relative h-44 w-44'>
-        <Image
-          src={urlFor(items[0].image[0]).url()}
-          layout='fill'
-          objectFit='contain'
-          alt='product'
-        />
+        <Link href={`/product/${encodeURIComponent(items[0].slug.current)}`}>
+          <a>
+            <Image
+              src={urlFor(items[0].image[0]).url()}
+              layout='fill'
+              objectFit='contain'
+              alt='product'
+            />
+          </a>
+        </Link>
       </div>
 
       <div className='flex flex-1 items-end lg:items-center'>
         <div className='flex-1 space-y-4'>
           <div className='flex flex-col gap-x-8 text-xl lg:flex-row lg:text-2xl'>
-            <h4 className='font-semibold lg:w-96'>{items[0].title}</h4>
+            <Link
+              href={`/product/${encodeURIComponent(items[0].slug.current)}`}
+            >
+              <a>
+                <h4 className='font-semibold lg:w-96'>{items[0].title}</h4>
+              </a>
+            </Link>
             <p className='flex items-end gap-x-1 font-semibold'>
               {items.length}
               <GrFormDown className='h-6 w-6' color='blue' />
