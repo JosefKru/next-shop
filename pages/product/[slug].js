@@ -49,14 +49,14 @@ const ProductPage = ({ product: serverProduct, imageGallery }) => {
       <Header />
 
       <div className='mt-10 flex flex-col items-center justify-evenly md:mb-72 md:ml-8 md:flex-row'>
-        <div className='h-[360px] w-[360px] select-none md:h-[555px] md:w-[555px]'>
+        <div className='h-[360px] w-[360px] select-none self-start transition-opacity ease-in-out md:h-[555px] md:w-[555px]'>
           <ImageSlider imageGallery={imageGallery} product={product} />
         </div>
         <div className='mt-6 flex flex-col p-4 md:w-[460px] '>
           <h1 className='pb-6 text-3xl font-bold text-[#404e65] md:text-5xl'>
             {product.title}
           </h1>
-          <div className='hidden h-72 md:block'>
+          <div className='hidden h-[360px] md:block'>
             <Description body={product.description} />
           </div>
           <h1 className='pb-6 text-3xl font-extrabold text-[#ff5b4b]'>

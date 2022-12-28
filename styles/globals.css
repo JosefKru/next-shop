@@ -32,4 +32,10 @@
   .formTextarea {
     @apply max-h-24 w-[100%]  rounded border-2 border-solid p-2 outline-none focus:border-green-500;
   }
+  .fadeIn {
+    @apply opacity-100 transition-all duration-1000 ease-in;
+  }
+  .fadeOut {
+    @apply opacity-0 transition-all duration-1000 ease-in;
+  }
 }

@@ -15,17 +15,17 @@ function Home({ categories, products }) {
         <title>Room 4 mommy</title>
       </Head>
 
-      <div className="bg-[#f0f7fd]">
+      <div className='bg-[#f0f7fd]'>
         <Header />
       </div>
 
       <Basket />
 
-      <main className="relative bg-[#f0f7fd]">
-        <Landing />
+      <main className='relative bg-[#f0f7fd]'>
+        <Landing products={products} />
       </main>
 
-      <section className="bg-gradient-to-b from-[#f0f7fd]">
+      <section className='bg-gradient-to-b from-[#f0f7fd]'>
         <Categories categories={categories} products={products} />
       </section>
 
