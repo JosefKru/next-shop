@@ -27,6 +27,7 @@
     "react-hook-form": "^7.40.0",
     "react-hot-toast": "^2.4.0",
     "react-icons": "^4.4.0",
+    "react-image-gallery": "^1.2.11",
     "react-redux": "^8.0.5",
     "react-responsive": "^9.0.2",
     "redux-persist": "^6.0.0"

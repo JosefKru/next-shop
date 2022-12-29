@@ -9,7 +9,12 @@ const ImageSlider = ({ imageGallery, product }) => {
   const imageGalleryOfItems = imageGallery.filter(
     (image) => image._id === product._id
   )
-  const urlOfSlides = imageGalleryOfItems[0].image.map((obj) => obj.asset.url)
+  const urlOfSlides = imageGalleryOfItems[0].image.map((obj, index) => {
+    return {
+      original: obj.asset.url,
+      thumbnail: urlFor(imageGalleryOfItems[0].image[index]).width(150).url(),
+    }
+  })
 
   const goToPrevious = () => {
     const isFirstSlide = currentIndex === 0

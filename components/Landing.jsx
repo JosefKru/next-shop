@@ -4,27 +4,32 @@ import { useState } from 'react'
 import { urlFor } from '../lib/client'
 import { GoPrimitiveDot } from 'react-icons/go'
 import Link from 'next/link'
+import ReactImageGallery from 'react-image-gallery'
+import { createRef } from 'react'
 
 const Landing = ({ products }) => {
+  const getCurrentIndex = createRef()
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [fadeState, setFadeState] = useState('fadeIn')
   const animateProducts = products.slice(0, 5)
 
-  console.log(animateProducts)
+  console.log(getCurrentIndex)
 
-  const interval = setInterval(() => {
-    goToNext()
-    setFadeState('fadeIn')
-  }, 1000)
-
-  const goToNext = () => {
-    const isLastSlide = currentIndex === animateProducts.length - 1
-    const newIndex = isLastSlide ? 0 : currentIndex + 1
-    setCurrentIndex(newIndex)
-
-    setFadeState('fadeOut')
-    clearInterval(interval)
-  }
+  const settingsOfImages = animateProducts.map((obj) => {
+    return {
+      original: urlFor(obj.image[0]).url(),
+      originalWidth: '300px',
+      originalHeight: '300px',
+      description: (
+        <Link href={`/product/${encodeURIComponent(obj.slug.current)}`}>
+          {obj.title}
+        </Link>
+      ),
+      originalTitle: obj.title,
+      originalClass:
+        'h-[300px] w-[300px] md:w-[450px] md:h-[450px] cursor-auto ',
+      // bulletClass: `bg-[#404e65] opacity-80 hover:text-[#56b0f2] hover:opacity-100`,
+    }
+  })
 
   const goToSlide = (slideIndex) => {
     setCurrentIndex(slideIndex)
@@ -32,61 +37,57 @@ const Landing = ({ products }) => {
 
   return (
     <section>
-      <div className='mx-auto mb-14 flex h-[550px] max-w-[1350px] items-end justify-between px-8 md:mb-8 md:items-center'>
-        <div className='space-y-8'>
-          <h1 className='h-44 space-y-3 text-5xl font-semibold tracking-wide md:h-64 lg:text-6xl xl:text-7xl'>
-            <span className='block text-[#404e65]'>
-              {animateProducts[currentIndex].title.split(' ')[0]}
-            </span>
-            <span className='block text-[#404e65]'>
-              {animateProducts[currentIndex].title.split(' ')[1] || ''}
-            </span>
-            <span className='block text-[#404e65]'>
-              {animateProducts[currentIndex].title.split(' ')[2] || ''}
-            </span>
-          </h1>
-
-          <div className='space-x-8'>
-            <Button title='Buy Now' />
-            <a className='link'>Learn More</a>
-          </div>
-        </div>
-
-        <div
-          className={`relative hidden h-[450px] w-[600px] select-none md:inline lg:h-[650px] lg:w-[600px] ${
-            fadeState === 'fadeIn' ? 'animate-fadeIn' : 'animate-fadeOut'
-          }`}
-        >
+      <div className='mx-auto flex h-[400px] max-w-[1350px] flex-col-reverse items-center justify-between px-8 md:h-[550px] md:flex-row'>
+        <div className='z-20 hidden w-[200px] flex-col items-center justify-center space-y-8 md:flex md:w-[500px]'>
           <Link
             href={`/product/${encodeURIComponent(
               animateProducts[currentIndex].slug.current
             )}`}
           >
             <a>
-              <Image
+              <h1 className=' h-44 space-y-3 text-5xl font-semibold tracking-wide  md:h-64 lg:text-6xl xl:text-7xl'>
+                <span className='block text-[#404e65]'>
+                  {animateProducts[currentIndex].title.split(' ')[0]}
+                </span>
+                <span className='block text-[#404e65]'>
+                  {animateProducts[currentIndex].title.split(' ')[1] || ''}
+                </span>
+                <span className='block text-[#404e65]'>
+                  {animateProducts[currentIndex].title.split(' ')[2] || ''}
+                </span>
+              </h1>
+            </a>
+          </Link>
+
+          <div className='space-x-8'>
+            <Button title='Add to cart' />
+            <a className='link'>Learn More</a>
+          </div>
+        </div>
+
+        <div className='z-10 flex h-[350px] w-[250px] justify-center lg:h-[500px] lg:w-[600px]'>
+          {/* <Image
                 priority
                 src={urlFor(animateProducts[currentIndex].image[0]).url()}
                 layout='fill'
                 objectFit='contain'
                 alt=''
-              />
-            </a>
-          </Link>
-        </div>
-      </div>
+              /> */}
 
-      <div className='flex justify-center'>
-        {animateProducts.map((_, slideIndex) => (
-          <div
-            key={slideIndex}
-            className={`m-1 cursor-pointer text-[#404e65] opacity-80 transition-all hover:text-[#56b0f2] hover:opacity-100 ${
-              slideIndex == currentIndex ? 'text-[#56b0f2]' : 'text-[#404e65]'
-            }`}
-            onClick={() => goToSlide(slideIndex)}
-          >
-            <GoPrimitiveDot size='25' />
-          </div>
-        ))}
+          <ReactImageGallery
+            ref={getCurrentIndex}
+            showThumbnails={false}
+            // thumbnailPosition='left'
+            slideInterval={5000}
+            slideDuration={800}
+            showNav={false}
+            autoPlay={true}
+            items={settingsOfImages}
+            showFullscreenButton={false}
+            showPlayButton={false}
+            showBullets={true}
+          />
+        </div>
       </div>
     </section>
   )
