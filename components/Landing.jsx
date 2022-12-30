@@ -9,10 +9,9 @@ import { createRef } from 'react'
 
 const Landing = ({ products }) => {
   const getCurrentIndex = createRef()
+
   const [currentIndex, setCurrentIndex] = useState(0)
   const animateProducts = products.slice(0, 5)
-
-  console.log(getCurrentIndex)
 
   const settingsOfImages = animateProducts.map((obj) => {
     return {
@@ -26,7 +25,7 @@ const Landing = ({ products }) => {
       ),
       originalTitle: obj.title,
       originalClass:
-        'h-[300px] w-[300px] md:w-[450px] md:h-[450px] cursor-auto ',
+        'h-[300px] w-[300px] md:w-[450px] md:h-[450px] cursor-auto',
       // bulletClass: `bg-[#404e65] opacity-80 hover:text-[#56b0f2] hover:opacity-100`,
     }
   })

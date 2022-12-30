@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { AiOutlineDoubleLeft, AiOutlineDoubleRight } from 'react-icons/ai'
 import { GoPrimitiveDot } from 'react-icons/go'
+import ReactImageGallery from 'react-image-gallery'
 import { urlFor } from '../lib/client'
 
 const ImageSlider = ({ imageGallery, product }) => {
@@ -34,7 +35,7 @@ const ImageSlider = ({ imageGallery, product }) => {
 
   return (
     <div className='relative h-[100%]'>
-      <div
+      {/* <div
         className='absolute top-[55%] left-[10px] z-10 translate-y-[-50%] cursor-pointer text-5xl text-[#404e65] opacity-30 transition-all duration-500 ease-in hover:opacity-100'
         onClick={goToPrevious}
       >
@@ -45,16 +46,22 @@ const ImageSlider = ({ imageGallery, product }) => {
         onClick={goToNext}
       >
         <AiOutlineDoubleRight />
-      </div>
+      </div> */}
       <div className='relative h-[360px] w-[360px] md:h-[555px] md:w-[555px]'>
-        <Image
-          src={urlFor(imageGalleryOfItems[0].image[currentIndex]).url()}
-          layout='fill'
-          objectFit='contain'
-          alt=''
+        <ReactImageGallery
+          showThumbnails={true}
+          thumbnailPosition='left'
+          slideInterval={5000}
+          slideDuration={800}
+          showNav={true}
+          autoPlay={false}
+          items={urlOfSlides}
+          showFullscreenButton={true}
+          showPlayButton={false}
+          showBullets={true}
         />
       </div>
-      <div className='flex justify-center'>
+      {/* <div className='flex justify-center'>
         {urlOfSlides.map((_, slideIndex) => (
           <div
             key={slideIndex}
@@ -66,7 +73,7 @@ const ImageSlider = ({ imageGallery, product }) => {
             <GoPrimitiveDot size='25' />
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   )
 }

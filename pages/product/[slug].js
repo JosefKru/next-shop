@@ -10,6 +10,7 @@ import { addToBasket, selectBasketItems } from '../../redux/basketSlice'
 import { toast } from 'react-hot-toast'
 import { AiFillCaretDown, AiFillCaretUp } from 'react-icons/ai'
 import ImageSlider from '../../components/ImageSlider'
+import { ReactImageGallery } from 'react-image-gallery'
 
 const ProductPage = ({ product: serverProduct, imageGallery }) => {
   const [isOpen, setIsOpen] = useState(true)
@@ -18,7 +19,20 @@ const ProductPage = ({ product: serverProduct, imageGallery }) => {
   const router = useRouter()
   const dispatch = useDispatch()
   const items = useSelector(selectBasketItems)
-  // const itemsGroup = items.filter((item) => item._id === product?._id)
+  const itemsGroup = items.filter((item) => item._id === product?._id)
+
+  // const settingsOfImages = product.map((obj) => {
+  //   return {
+  //     original: urlFor(obj.image[0]).url(),
+  //     // originalWidth: '300px',
+  //     // originalHeight: '300px',
+  //     description: obj.title,
+  //     originalTitle: obj.title,
+  //     // originalClass:
+  //     // 'h-[300px] w-[300px] md:w-[450px] md:h-[450px] cursor-auto',
+  //     // bulletClass: `bg-[#404e65] opacity-80 hover:text-[#56b0f2] hover:opacity-100`,
+  //   }
+  // })
 
   useEffect(() => {
     async function load() {
@@ -31,7 +45,7 @@ const ProductPage = ({ product: serverProduct, imageGallery }) => {
     if (!serverProduct) {
       load()
     }
-  }, [items, serverProduct, router.query.slug])
+  }, [serverProduct, router.query.slug])
 
   const addItemToBasket = () => {
     dispatch(addToBasket(product))
