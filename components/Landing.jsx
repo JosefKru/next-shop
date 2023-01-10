@@ -20,6 +20,8 @@ const Landing = ({ products }) => {
           {obj.title}
         </Link>
       ),
+      originalHeight: '550px',
+      originalWidth: '550px',
       originalClass:
         'h-[300px] w-[300px] md:w-[550px] md:h-[550px] cursor-auto',
     }

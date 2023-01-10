@@ -9,6 +9,8 @@ const ImageSlider = ({ imageGallery, product }) => {
     return {
       original: obj.asset.url,
       thumbnail: urlFor(imageGalleryOfItems[0].image[index]).url(),
+      originalHeight: '550px',
+      originalWidth: '550px',
       originalClass:
         'h-[360px] w-[360px] md:w-[550px] md:h-[550px] cursor-auto',
     }
