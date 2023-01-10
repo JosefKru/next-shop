@@ -1,38 +1,29 @@
 import Image from 'next/image'
 import Button from './Button'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { urlFor } from '../lib/client'
 import { GoPrimitiveDot } from 'react-icons/go'
 import Link from 'next/link'
 import ReactImageGallery from 'react-image-gallery'
-import { createRef } from 'react'
 
 const Landing = ({ products }) => {
-  const getCurrentIndex = createRef()
-
+  const ref = useRef(null)
+  console.log(ref.current)
   const [currentIndex, setCurrentIndex] = useState(0)
   const animateProducts = products.slice(0, 5)
 
-  const settingsOfImages = animateProducts.map((obj) => {
+  const slidesSettings = animateProducts.map((obj) => {
     return {
       original: urlFor(obj.image[0]).url(),
-      originalWidth: '300px',
-      originalHeight: '300px',
       description: (
         <Link href={`/product/${encodeURIComponent(obj.slug.current)}`}>
           {obj.title}
         </Link>
       ),
-      originalTitle: obj.title,
       originalClass:
-        'h-[300px] w-[300px] md:w-[450px] md:h-[450px] cursor-auto',
-      // bulletClass: `bg-[#404e65] opacity-80 hover:text-[#56b0f2] hover:opacity-100`,
+        'h-[300px] w-[300px] md:w-[550px] md:h-[550px] cursor-auto',
     }
   })
-
-  const goToSlide = (slideIndex) => {
-    setCurrentIndex(slideIndex)
-  }
 
   return (
     <section>
@@ -64,24 +55,15 @@ const Landing = ({ products }) => {
           </div>
         </div>
 
-        <div className='z-10 flex h-[350px] w-[250px] justify-center lg:h-[500px] lg:w-[600px]'>
-          {/* <Image
-                priority
-                src={urlFor(animateProducts[currentIndex].image[0]).url()}
-                layout='fill'
-                objectFit='contain'
-                alt=''
-              /> */}
-
+        <div className='flex h-[350px] w-[250px] justify-center lg:h-[500px] lg:w-[600px]'>
           <ReactImageGallery
-            ref={getCurrentIndex}
+            ref={ref}
             showThumbnails={false}
-            // thumbnailPosition='left'
             slideInterval={5000}
             slideDuration={800}
             showNav={false}
             autoPlay={true}
-            items={settingsOfImages}
+            items={slidesSettings}
             showFullscreenButton={false}
             showPlayButton={false}
             showBullets={true}

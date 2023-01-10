@@ -62,18 +62,19 @@ const ProductPage = ({ product: serverProduct, imageGallery }) => {
       </Head>
       <Header />
 
-      <div className='mt-10 flex flex-col items-center justify-evenly md:mb-72 md:ml-8 md:flex-row'>
-        <div className='h-[360px] w-[360px] select-none self-start transition-opacity ease-in-out md:h-[555px] md:w-[555px]'>
-          <ImageSlider imageGallery={imageGallery} product={product} />
-        </div>
-        <div className='mt-6 flex flex-col p-4 md:w-[460px] '>
-          <h1 className='pb-6 text-3xl font-bold text-[#404e65] md:text-5xl'>
+      <div className='mt-10 flex flex-col items-center justify-evenly md:mb-72 md:ml-8 md:flex-row md:items-start'>
+        <h1 className='mb-10 px-4 text-3xl font-bold text-[#404e65] md:hidden md:text-5xl'>
+          {product.title}
+        </h1>
+        <ImageSlider imageGallery={imageGallery} product={product} />
+        <div className='flex flex-col p-4 md:w-[460px]'>
+          <h1 className='hidden pb-6 text-3xl font-bold text-[#404e65] md:mb-4 md:block md:text-5xl'>
             {product.title}
           </h1>
-          <div className='hidden h-[360px] md:block'>
+          <div className='hidden h-[260px] pb-6 md:inline-block'>
             <Description body={product.description} />
           </div>
-          <h1 className='pb-6 text-3xl font-extrabold text-[#ff5b4b]'>
+          <h1 className='mt-10 pb-6 text-3xl font-extrabold text-[#ff5b4b] '>
             {product.price}₴
           </h1>
           <div>

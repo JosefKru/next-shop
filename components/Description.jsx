@@ -12,16 +12,13 @@ const Description = ({ body }) => {
     },
   }
 
-  console.log(body.length)
   return (
-    <div className=' pb-6'>
-      <SanityBlockContent
-        blocks={body.length > 1 ? body.slice(0, 1) : body}
-        imageOptions={{ w: 1000, h: 750, fit: 'max' }}
-        projectId={config.projectId}
-        dataset={config.dataset}
-      />
-    </div>
+    <SanityBlockContent
+      blocks={body}
+      imageOptions={{ w: 1000, h: 750, fit: 'max' }}
+      projectId={config.projectId}
+      dataset={config.dataset}
+    />
   )
 }
 
