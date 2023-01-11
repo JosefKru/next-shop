@@ -10,25 +10,23 @@ const ImageSlider = ({ imageGallery, product }) => {
       original: obj.asset.url,
       thumbnail: urlFor(imageGalleryOfItems[0].image[index]).url(),
       originalClass:
-        'h-[360px] w-[360px] md:w-[600px] md:h-[600px] cursor-auto',
+        'h-[360px] w-[360px] md:w-[600px] md:h-[600px] cursor-auto px-2',
     }
   })
 
   return (
-    <div className='relative select-none self-start'>
-      <ReactImageGallery
-        showThumbnails={true}
-        thumbnailPosition='bottom'
-        slideInterval={5000}
-        slideDuration={800}
-        showNav={true}
-        autoPlay={false}
-        items={slidesSetting}
-        showFullscreenButton={false}
-        showPlayButton={false}
-        showBullets={true}
-      />
-    </div>
+    <ReactImageGallery
+      showThumbnails={true}
+      thumbnailPosition='bottom'
+      slideInterval={5000}
+      slideDuration={800}
+      showNav={true}
+      autoPlay={false}
+      items={slidesSetting}
+      showFullscreenButton={false}
+      showPlayButton={false}
+      showBullets={true}
+    />
   )
 }
 

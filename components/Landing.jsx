@@ -17,7 +17,7 @@ const Landing = ({ products }) => {
         </Link>
       ),
       originalClass:
-        'h-[300px] w-[300px] md:w-[500px] md:h-[600px] cursor-auto',
+        'h-[360px] w-[360px] md:w-[600px] md:h-[600px] cursor-auto',
     }
   })
 
