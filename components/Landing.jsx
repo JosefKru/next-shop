@@ -1,14 +1,10 @@
-import Image from 'next/image'
 import Button from './Button'
 import { useRef, useState } from 'react'
 import { urlFor } from '../lib/client'
-import { GoPrimitiveDot } from 'react-icons/go'
 import Link from 'next/link'
 import ReactImageGallery from 'react-image-gallery'
 
 const Landing = ({ products }) => {
-  const ref = useRef(null)
-  console.log(ref.current)
   const [currentIndex, setCurrentIndex] = useState(0)
   const animateProducts = products.slice(0, 5)
 
@@ -20,10 +16,8 @@ const Landing = ({ products }) => {
           {obj.title}
         </Link>
       ),
-      originalHeight: '550px',
-      originalWidth: '550px',
       originalClass:
-        'h-[300px] w-[300px] md:w-[550px] md:h-[550px] cursor-auto',
+        'h-[300px] w-[300px] md:w-[500px] md:h-[600px] cursor-auto',
     }
   })
 
@@ -57,20 +51,17 @@ const Landing = ({ products }) => {
           </div>
         </div>
 
-        <div className='flex h-[350px] w-[250px] justify-center lg:h-[500px] lg:w-[600px]'>
-          <ReactImageGallery
-            ref={ref}
-            showThumbnails={false}
-            slideInterval={5000}
-            slideDuration={800}
-            showNav={false}
-            autoPlay={true}
-            items={slidesSettings}
-            showFullscreenButton={false}
-            showPlayButton={false}
-            showBullets={true}
-          />
-        </div>
+        <ReactImageGallery
+          showThumbnails={false}
+          slideInterval={5000}
+          slideDuration={800}
+          showNav={false}
+          autoPlay={true}
+          items={slidesSettings}
+          showFullscreenButton={false}
+          showPlayButton={false}
+          showBullets={true}
+        />
       </div>
     </section>
   )
