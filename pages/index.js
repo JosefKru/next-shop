@@ -21,7 +21,7 @@ function Home({ categories, products }) {
 
       <Basket />
 
-      <main className='relative bg-[#f0f7fd]'>
+      <main className='relative bg-[#f0f7fd] pb-20 md:pb-10'>
         <Landing products={products} />
       </main>
 

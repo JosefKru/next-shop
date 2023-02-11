@@ -9,24 +9,27 @@ const ImageSlider = ({ imageGallery, product }) => {
     return {
       original: obj.asset.url,
       thumbnail: urlFor(imageGalleryOfItems[0].image[index]).url(),
+
       originalClass:
-        'h-[360px] w-[360px] md:w-[600px] md:h-[600px] cursor-auto px-2',
+        'h-[350px] w-[100%] md:w-[100%] md:h-[510px] lg:w-[100%] lg:h-[650px]',
     }
   })
 
   return (
-    <ReactImageGallery
-      showThumbnails={true}
-      thumbnailPosition='bottom'
-      slideInterval={5000}
-      slideDuration={800}
-      showNav={true}
-      autoPlay={false}
-      items={slidesSetting}
-      showFullscreenButton={false}
-      showPlayButton={false}
-      showBullets={true}
-    />
+    <div className='h-[450px] w-[300px] md:h-[600px] md:w-[600px] '>
+      <ReactImageGallery
+        showThumbnails={true}
+        thumbnailPosition='bottom'
+        slideInterval={5000}
+        slideDuration={800}
+        showNav={true}
+        autoPlay={false}
+        items={slidesSetting}
+        showFullscreenButton={true}
+        showPlayButton={false}
+        showBullets={true}
+      />
+    </div>
   )
 }
 

@@ -21,7 +21,7 @@ const Landing = ({ products }) => {
         </Link>
       ),
       originalClass:
-        'h-[360px] w-[360px] md:w-[600px] md:h-[600px] cursor-auto',
+        'h-[360px] w-[100%] md:w-[100%] md:h-[500px] lg:w-[100%] lg:h-[585px] cursor-auto',
     }
   })
   const dispatch = useDispatch()
@@ -35,7 +35,7 @@ const Landing = ({ products }) => {
 
   return (
     <section>
-      <div className='mx-auto flex h-[400px] max-w-[1350px] flex-col-reverse items-center justify-between px-8 md:h-[550px] md:flex-row'>
+      <div className='mx-auto flex h-[250px] max-w-[1350px] flex-col-reverse items-center justify-between px-8 md:h-[550px] md:flex-row'>
         <div className='z-20 hidden w-[200px] flex-col items-center justify-center space-y-8 md:flex md:w-[500px]'>
           <Link
             href={`/product/${encodeURIComponent(
@@ -69,13 +69,13 @@ const Landing = ({ products }) => {
           </div>
         </div>
 
-        <div className='md:h-[500px] md:w-[600px]'>
+        <div className='h-[250px] w-[300px] md:h-[700px] md:w-[700px] '>
           <ReactImageGallery
             onBeforeSlide={(currentIndex) => setCurrentIndex(currentIndex)}
             showThumbnails={false}
             slideInterval={5000}
             slideDuration={800}
-            showNav={false}
+            showNav={true}
             autoPlay={true}
             items={slidesSettings}
             showFullscreenButton={false}
