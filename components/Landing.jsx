@@ -20,8 +20,8 @@ const Landing = ({ products }) => {
           {obj.title}
         </Link>
       ),
-      // originalClass:
-      //   'h-[360px] w-[360px] md:w-[600px] md:h-[600px] cursor-auto',
+      originalClass:
+        'h-[360px] w-[360px] md:w-[600px] md:h-[600px] cursor-auto',
     }
   })
   const dispatch = useDispatch()
@@ -69,7 +69,7 @@ const Landing = ({ products }) => {
           </div>
         </div>
 
-        <div className='w-[600px]'>
+        <div className='md:h-[500px] md:w-[600px]'>
           <ReactImageGallery
             onBeforeSlide={(currentIndex) => setCurrentIndex(currentIndex)}
             showThumbnails={false}
