@@ -20,9 +20,8 @@ const Landing = ({ products }) => {
           {obj.title}
         </Link>
       ),
-
-      originalClass:
-        'h-[360px] w-[360px] md:w-[200px] md:h-[200px] cursor-auto',
+      // originalClass:
+      //   'h-[360px] w-[360px] md:w-[600px] md:h-[600px] cursor-auto',
     }
   })
   const dispatch = useDispatch()
@@ -70,18 +69,20 @@ const Landing = ({ products }) => {
           </div>
         </div>
 
-        <ReactImageGallery
-          onBeforeSlide={(currentIndex) => setCurrentIndex(currentIndex)}
-          showThumbnails={false}
-          slideInterval={5000}
-          slideDuration={800}
-          showNav={false}
-          autoPlay={true}
-          items={slidesSettings}
-          showFullscreenButton={false}
-          showPlayButton={false}
-          showBullets={true}
-        />
+        <div className='w-[600px]'>
+          <ReactImageGallery
+            onBeforeSlide={(currentIndex) => setCurrentIndex(currentIndex)}
+            showThumbnails={false}
+            slideInterval={5000}
+            slideDuration={800}
+            showNav={false}
+            autoPlay={true}
+            items={slidesSettings}
+            showFullscreenButton={false}
+            showPlayButton={false}
+            showBullets={true}
+          />
+        </div>
       </div>
     </section>
   )
