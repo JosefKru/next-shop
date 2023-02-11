@@ -20,8 +20,9 @@ const Landing = ({ products }) => {
           {obj.title}
         </Link>
       ),
+
       originalClass:
-        'h-[360px] w-[360px] md:w-[600px] md:h-[600px] cursor-auto',
+        'h-[360px] w-[360px] md:w-[200px] md:h-[200px] cursor-auto',
     }
   })
   const dispatch = useDispatch()
