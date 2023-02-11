@@ -1,11 +1,15 @@
-import Button from './Button'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import { urlFor } from '../lib/client'
 import Link from 'next/link'
 import ReactImageGallery from 'react-image-gallery'
+import Button from './Button'
+import { useDispatch } from 'react-redux'
+import { addToBasket } from '../redux/basketSlice'
+import { toast } from 'react-hot-toast'
 
 const Landing = ({ products }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
+
   const animateProducts = products.slice(0, 5)
 
   const slidesSettings = animateProducts.map((obj) => {
@@ -20,6 +24,14 @@ const Landing = ({ products }) => {
         'h-[360px] w-[360px] md:w-[600px] md:h-[600px] cursor-auto',
     }
   })
+  const dispatch = useDispatch()
+
+  const addProduct = () => {
+    dispatch(addToBasket(animateProducts[currentIndex]))
+    toast.success(`${animateProducts[currentIndex].title} added to basket`, {
+      position: 'bottom-center',
+    })
+  }
 
   return (
     <section>
@@ -46,12 +58,19 @@ const Landing = ({ products }) => {
           </Link>
 
           <div className='space-x-8'>
-            <Button title='Add to cart' />
-            <a className='link'>Learn More</a>
+            <Button title='Add to cart' onClick={() => addProduct()} />
+            <Link
+              href={`/product/${encodeURIComponent(
+                animateProducts[currentIndex].slug.current
+              )}`}
+            >
+              <a className='link'>Learn More</a>
+            </Link>
           </div>
         </div>
 
         <ReactImageGallery
+          onBeforeSlide={(currentIndex) => setCurrentIndex(currentIndex)}
           showThumbnails={false}
           slideInterval={5000}
           slideDuration={800}
