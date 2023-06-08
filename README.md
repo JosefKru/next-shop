@@ -1,34 +1,23 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Онлайн-магазин детских вещей 🌟🎉🎈
 
-## Getting Started
+Это репозиторий проекта онлайн-магазина детских вещей - [Room4Mommy](https://room4mommy.vercel.app). 
 
-First, run the development server:
+## Описание проекта 📄
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Проект разработан с использованием JavaScript и NextJS фреймворка. Он включает в себя функциональность, позволяющую пользователям просматривать и покупать товары, добавлять их в корзину, оформлять заказы и получать уведомления о статусе заказа.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Функциональность 💡
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- **Просмотр товаров**: Пользователи могут просматривать список доступных товаров и получать подробную информацию о каждом товаре.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- **Добавление товаров в корзину**: Пользователи могут добавлять понравившиеся товары в корзину для последующей покупки.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- **Оформление заказов**: Пользователи могут оформить заказ, указав необходимые данные для связи доставки.
 
-## Learn More
+- **Вход через Google**: Пользователи могут использовать свои учетные данные Google для входа в систему онлайн-магазина. Это обеспечивает удобство использования, поскольку пользователи могут использовать свои существующие учетные данные Google вместо создания отдельного аккаунта.
 
-To learn more about Next.js, take a look at the following resources:
+## Связаться со мной 📧
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [Мой telegram](https://t.me/josefKru)
+- [Мой профиль LinkedIn](https://www.linkedin.com/in/ivan-alyakin-976842243/)
+- Электронная почта: josefkaru@gmail.com
