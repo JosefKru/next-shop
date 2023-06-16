@@ -10,6 +10,7 @@
 - Next.js ⚡️
 - Tailwind CSS 💅
 - Sanity CMS 🖥️
+- Redux toolkit 🔧
 
 ## Функциональность 💡
 
