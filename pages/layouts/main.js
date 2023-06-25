@@ -8,7 +8,7 @@ function MainLayout({ metaTitle, children }) {
         <title>{metaTitle}</title>
       </Head>
 
-      {children}
+      <main>{children}</main>
 
       <Footer />
     </>

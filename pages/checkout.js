@@ -1,15 +1,17 @@
-import Head from 'next/head'
 import Image from 'next/image'
 import Currency from 'react-currency-formatter'
 import Header from '../components/Header'
 import CheckoutProduct from '../components/CheckoutProduct'
 import Button from '../components/Button'
 import Form from './../components/Form'
-import Footer from '../components/Footer'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { useSelector } from 'react-redux'
-import { selectBasketItems, selectBasketTotal } from '../redux/basketSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+  removeAllFromBasket,
+  selectBasketItems,
+  selectBasketTotal,
+} from '../redux/basketSlice'
 import { fetchPostJSON } from './api/api-helpers'
 import getStripe from '../utils/get-stripejs'
 import MainLayout from './layouts/main'
@@ -17,6 +19,7 @@ import MainLayout from './layouts/main'
 const Checkout = () => {
   const [isVisible, setIsVisible] = useState(false)
   const basketTotal = useSelector(selectBasketTotal)
+  const dispatch = useDispatch()
   const items = useSelector(selectBasketItems)
   const router = useRouter()
   const [groupedItemsInBasket, setGroupedItemsInBasket] = useState({})
@@ -35,8 +38,6 @@ const Checkout = () => {
   const createCheckoutSession = async (e) => {
     setLoading(true)
 
-    // e.preventDefault()
-
     const checkoutSession = await fetchPostJSON('/api/checkout_sessions', {
       items: items,
     })
@@ -47,6 +48,7 @@ const Checkout = () => {
     }
 
     const stripe = await getStripe()
+
     const { error } = await stripe.redirectToCheckout({
       // Вместо заполнителя {{CHECKOUT_SESSION_ID}} передаем значение поля id,
       // полученное из ответа API при создании сеанса оформления заказа.
@@ -115,7 +117,10 @@ const Checkout = () => {
                     <Button
                       title='Check Out'
                       className='rounded bg-gradient-to-t from-[#ffb74a] to-[#ff5b4b] px-8 py-2 text-base font-bold text-white transition active:scale-95'
-                      onClick={createCheckoutSession}
+                      onClick={() => {
+                        createCheckoutSession()
+                        dispatch(removeAllFromBasket)
+                      }}
                       loading={loading}
                     />
 
