@@ -1,8 +1,9 @@
 import Image from 'next/image'
+import { fetchCategories } from '../utils/fetchCategories'
 
 const Footer = ({ categories }) => {
   return (
-    <div className='lg:mx-20'>
+    <footer className='lg:mx-20'>
       <div className='flex flex-row justify-around bg-[#eff8ff] p-14'>
         <div className=''>
           <div className='relative h-16 w-32'>
@@ -32,8 +33,16 @@ const Footer = ({ categories }) => {
           <div>map</div>
         </div>
       </div>
-    </div>
+    </footer>
   )
 }
 
 export default Footer
+
+export const getServerSideProps = async (context) => {
+  const categories = await fetchCategories()
+
+  return {
+    props: { categories, products, session },
+  }
+}

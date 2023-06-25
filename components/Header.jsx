@@ -14,41 +14,41 @@ function Header() {
 
   // console.log(session)
   return (
-    <header className="flex w-full items-center justify-between p-11">
-      <div className="flex items-center justify-center md:w-1/5">
-        <Link href="/">
-          <div className="relative h-20 w-40 cursor-pointer transition">
+    <header className='flex w-full items-center justify-between p-11'>
+      <div className='flex items-center justify-center md:w-1/5'>
+        <Link href='/'>
+          <div className='relative h-24 w-32 cursor-pointer transition md:h-24 md:w-48'>
             <Image
-              src="/logo.svg"
-              layout="fill"
-              objectFit="contain"
-              alt="logo"
+              src='/logo2.png'
+              layout='fill'
+              objectFit='contain'
+              alt='logo'
             />
           </div>
         </Link>
       </div>
-      <div className="hidden flex-1 items-center justify-center space-x-8 md:flex">
-        <a href="" className="headerLink">
+      <div className='hidden flex-1 items-center justify-center space-x-8 md:flex'>
+        <a href='' className='headerLink'>
           Categories
         </a>
-        <a href="" className="headerLink">
+        <a href='' className='headerLink'>
           Link
         </a>
-        <a href="" className="headerLink">
+        <a href='' className='headerLink'>
           About
         </a>
-        <a href="" className="headerLink">
+        <a href='' className='headerLink'>
           Contacts
         </a>
       </div>
-      <div className="flex items-center justify-center gap-x-4 md:w-1/5">
-        <BiSearchAlt className="headerIcon hidden sm:inline-flex" />
-        <Link href="/checkout">
-          <div className="relative cursor-pointer">
-            <span className="absolute -right-3 -top-3 z-10 flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-r from-[#ffb74a] to-[#ff5b4b] text-[14px]  font-bold text-white">
+      <div className='flex items-center justify-center gap-x-4 md:w-1/5'>
+        <BiSearchAlt className='headerIcon hidden sm:inline-flex' />
+        <Link href='/checkout'>
+          <div className='relative cursor-pointer'>
+            <span className='absolute -right-3 -top-3 z-10 flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-r from-[#ffb74a] to-[#ff5b4b] text-[14px]  font-bold text-white'>
               {items.length}
             </span>
-            <HiOutlineShoppingCart className="headerIcon" />
+            <HiOutlineShoppingCart className='headerIcon' />
           </div>
         </Link>
 
@@ -58,14 +58,14 @@ function Header() {
               session.user?.image ||
               'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y'
             }
-            alt="avatar"
-            className="cursor-pointer rounded-full"
+            alt='avatar'
+            className='cursor-pointer rounded-full'
             width={34}
             height={34}
             onClick={() => signOut()}
           />
         ) : (
-          <AiOutlineUser className="headerIcon" onClick={() => signIn()} />
+          <AiOutlineUser className='headerIcon' onClick={() => signIn()} />
         )}
       </div>
     </header>

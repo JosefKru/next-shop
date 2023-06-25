@@ -10,7 +10,7 @@ import { addToBasket, selectBasketItems } from '../../redux/basketSlice'
 import { toast } from 'react-hot-toast'
 import { AiFillCaretDown, AiFillCaretUp } from 'react-icons/ai'
 import ImageSlider from '../../components/ImageSlider'
-import { ReactImageGallery } from 'react-image-gallery'
+import MainLayout from '../layouts/main'
 
 const ProductPage = ({ product: serverProduct, imageGallery }) => {
   const [isOpen, setIsOpen] = useState(true)
@@ -18,21 +18,8 @@ const ProductPage = ({ product: serverProduct, imageGallery }) => {
   const [product, setProduct] = useState(serverProduct)
   const router = useRouter()
   const dispatch = useDispatch()
-  const items = useSelector(selectBasketItems)
-  const itemsGroup = items.filter((item) => item._id === product?._id)
-
-  // const settingsOfImages = product.map((obj) => {
-  //   return {
-  //     original: urlFor(obj.image[0]).url(),
-  //     // originalWidth: '300px',
-  //     // originalHeight: '300px',
-  //     description: obj.title,
-  //     originalTitle: obj.title,
-  //     // originalClass:
-  //     // 'h-[300px] w-[300px] md:w-[450px] md:h-[450px] cursor-auto',
-  //     // bulletClass: `bg-[#404e65] opacity-80 hover:text-[#56b0f2] hover:opacity-100`,
-  //   }
-  // })
+  // const items = useSelector(selectBasketItems)
+  // const itemsGroup = items.filter((item) => item._id === product?._id)
 
   useEffect(() => {
     async function load() {
@@ -56,10 +43,7 @@ const ProductPage = ({ product: serverProduct, imageGallery }) => {
   }
 
   return (
-    <>
-      <Head>
-        <title>{product.metaTitle}</title>
-      </Head>
+    <MainLayout metaTitle={`${product.metaTitle} | Room4mommy`}>
       <Header />
 
       <div className='mt-10 flex flex-col items-center justify-evenly md:mb-72 md:ml-8 md:flex-row md:items-start'>
@@ -89,7 +73,6 @@ const ProductPage = ({ product: serverProduct, imageGallery }) => {
                 >
                   -
                 </button>
-                {/* <span className="text-xl">{itemsGroup.length}</span> */}
                 <span className='text-xl'>{productAmount}</span>
                 <button
                   className='cursor-pointer text-xl font-bold opacity-50 hover:opacity-80'
@@ -128,9 +111,7 @@ const ProductPage = ({ product: serverProduct, imageGallery }) => {
           )}
         </div>
       </div>
-
-      <Footer />
-    </>
+    </MainLayout>
   )
 }
 

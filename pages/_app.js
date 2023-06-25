@@ -7,7 +7,6 @@ import { SessionProvider } from 'next-auth/react'
 import { PersistGate } from 'redux-persist/integration/react'
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
-  const happyNewYear = 2023
   return (
     <SessionProvider session={session}>
       <Provider store={store}>

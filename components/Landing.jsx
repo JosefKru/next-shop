@@ -44,13 +44,13 @@ const Landing = ({ products }) => {
           >
             <a>
               <h1 className=' h-44 space-y-3 text-5xl font-semibold tracking-wide  md:h-64 lg:text-6xl xl:text-7xl'>
-                <span className='block text-[#404e65]'>
+                <span className='block text-[#fd831f]'>
                   {animateProducts[currentIndex].title.split(' ')[0]}
                 </span>
-                <span className='block text-[#404e65]'>
+                <span className='block text-[#fd831f]'>
                   {animateProducts[currentIndex].title.split(' ')[1] || ''}
                 </span>
-                <span className='block text-[#404e65]'>
+                <span className='block text-[#fd831f]'>
                   {animateProducts[currentIndex].title.split(' ')[2] || ''}
                 </span>
               </h1>
@@ -64,7 +64,7 @@ const Landing = ({ products }) => {
                 animateProducts[currentIndex].slug.current
               )}`}
             >
-              <a className='link'>Learn More</a>
+              <a className='link'>Reed More</a>
             </Link>
           </div>
         </div>
