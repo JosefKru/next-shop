@@ -8,15 +8,43 @@ import { useSelector } from 'react-redux'
 import { selectBasketItems } from '../redux/basketSlice'
 import { useSession, signIn, signOut } from 'next-auth/react'
 
-function Header() {
+function Header({ bg = null }) {
   const { data: session } = useSession()
   const items = useSelector(selectBasketItems)
 
+  const nav = [
+    {
+      title: 'Categories',
+      href: '',
+      className: 'headerLink',
+    },
+    {
+      title: 'About',
+      href: '',
+      className: 'headerLink',
+    },
+    {
+      title: 'Contacts',
+      href: '',
+      className: 'headerLink',
+    },
+    {
+      title: 'Blog',
+      href: '',
+      className: 'headerLink',
+    },
+    {
+      title: 'FAQ',
+      href: '',
+      className: 'headerLink',
+    },
+  ]
+
   // console.log(session)
   return (
-    <header className='flex w-full items-center justify-between p-11'>
+    <header className={`flex w-full items-center justify-between p-11 ${bg}`}>
       <div className='flex items-center justify-center md:w-1/5'>
-        <Link href='/'>
+        <Link passHref href='/'>
           <div className='relative h-24 w-32 cursor-pointer transition md:h-24 md:w-48'>
             <Image
               src='/logo2.png'
@@ -27,23 +55,16 @@ function Header() {
           </div>
         </Link>
       </div>
-      <div className='hidden flex-1 items-center justify-center space-x-8 md:flex'>
-        <a href='' className='headerLink'>
-          Categories
-        </a>
-        <a href='' className='headerLink'>
-          Link
-        </a>
-        <a href='' className='headerLink'>
-          About
-        </a>
-        <a href='' className='headerLink'>
-          Contacts
-        </a>
-      </div>
+      <nav className='hidden flex-1 items-center justify-center space-x-8 md:flex'>
+        {nav.map((n, i) => (
+          <Link href={n.href} className={n.className} key={i}>
+            {n.title}
+          </Link>
+        ))}
+      </nav>
       <div className='flex items-center justify-center gap-x-4 md:w-1/5'>
         <BiSearchAlt className='headerIcon hidden sm:inline-flex' />
-        <Link href='/checkout'>
+        <Link passHref href='/checkout'>
           <div className='relative cursor-pointer'>
             <span className='absolute -right-3 -top-3 z-10 flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-r from-[#ffb74a] to-[#ff5b4b] text-[14px]  font-bold text-white'>
               {items.length}

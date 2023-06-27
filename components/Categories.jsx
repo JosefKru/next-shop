@@ -10,13 +10,13 @@ const Categories = ({ categories, products }) => {
       ))
   }
   return (
-    <div className="space-y-10 py-16">
-      <h1 className="text-center text-4xl font-bold tracking-wide text-[#404e65] md:text-5xl">
+    <div className='space-y-10 py-16'>
+      <h1 className='text-center text-4xl font-bold tracking-wide text-[#404e65] md:text-5xl'>
         New Promos
       </h1>
 
       <Tab.Group>
-        <Tab.List className="flex items-center justify-center ">
+        <Tab.List className='flex items-center justify-center '>
           {categories.map((category) => (
             <Tab
               key={category._id}
@@ -33,10 +33,10 @@ const Categories = ({ categories, products }) => {
             </Tab>
           ))}
         </Tab.List>
-        <Tab.Panels className="mx-auto max-w-fit pt-10 pb-24 sm:px-4">
-          <Tab.Panel className="tabPanel">{showProducts(0)}</Tab.Panel>
-          <Tab.Panel className="tabPanel">{showProducts(1)}</Tab.Panel>
-          <Tab.Panel className="tabPanel">{showProducts(2)}</Tab.Panel>
+        <Tab.Panels className='mx-auto max-w-fit pt-10 pb-24 sm:px-4'>
+          <Tab.Panel className='tabPanel'>{showProducts(0)}</Tab.Panel>
+          <Tab.Panel className='tabPanel'>{showProducts(1)}</Tab.Panel>
+          <Tab.Panel className='tabPanel'>{showProducts(2)}</Tab.Panel>
         </Tab.Panels>
       </Tab.Group>
     </div>

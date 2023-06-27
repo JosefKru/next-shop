@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Footer from '../../components/Footer'
 
-function MainLayout({ metaTitle, children }) {
+function MainLayout({ metaTitle, categories, children }) {
   return (
     <>
       <Head>
@@ -10,7 +10,7 @@ function MainLayout({ metaTitle, children }) {
 
       <main>{children}</main>
 
-      <Footer />
+      <Footer categories={categories} />
     </>
   )
 }

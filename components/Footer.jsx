@@ -1,37 +1,41 @@
 import Image from 'next/image'
-import { fetchCategories } from '../utils/fetchCategories'
 
 const Footer = ({ categories }) => {
-  console.log(categories)
   return (
     <footer className='lg:mx-20'>
-      <div className='flex flex-row justify-around bg-[#eff8ff] p-14'>
-        <div className=''>
-          <div className='relative h-16 w-32'>
+      <div className='mt-4 flex flex-row justify-around rounded-3xl bg-[#eff8ff] p-14'>
+        <div className='flex flex-col items-center justify-center'>
+          <div className='relative mb-6 h-16 w-32'>
             <Image
-              src='/logo.svg'
+              src='/logo2.png'
               layout='fill'
               objectFit='contain'
-              alt='logo'
+              alt='Logo'
             />
           </div>
-          <div className=''>555 California str, Suite 100 San Francisco,</div>
-          <div>CA 94107 1-800-312-2121 1-800-310-1010</div>
-          <div>example@domain.net</div>
-        </div>
-        <div className='hidden w-48 md:block'>
           <div>
-            <p className='font-bold'>Categories</p>
+            <address>555 California Street, Suite 100, San Francisco</address>
+            <div>CA 94107</div>
+            <div>
+              Phone:
+              <a href='tel:1-800-312-2121'> 1-800-312-2121</a>,
+              <a href='tel:1-800-310-1010'> 1-800-310-1010</a>
+            </div>
+            <div>
+              Email:
+              <a href='mailto:josefkaru@gmail.com'>josefkaru@gmail.com</a>
+            </div>
           </div>
+        </div>
+        <div className='mt-10 hidden w-48 md:block'>
+          <p className='font-bold'>Categories</p>
           {categories?.map((category) => (
             <div key={category._id}>{category.title}</div>
           ))}
         </div>
-        <div className='hidden w-48 md:block'>
-          <div>
-            <p className='font-bold'>Newest</p>
-          </div>
-          <div>map</div>
+        <div className='mt-10 hidden w-48 md:block'>
+          <p className='font-bold'>Newest</p>
+          <div>map here</div>
         </div>
       </div>
     </footer>
@@ -39,10 +43,3 @@ const Footer = ({ categories }) => {
 }
 
 export default Footer
-
-export const getServerSideProps = async (context) => {
-  const categories = await fetchCategories()
-  return {
-    props: { categories },
-  }
-}
