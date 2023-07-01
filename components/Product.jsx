@@ -19,7 +19,10 @@ const Product = ({ product }) => {
 
   return (
     <div className='h-[305px] w-40 select-none rounded-xl border-2 bg-[#ffffff] p-6 md:h-[395px] md:w-[262px]'>
-      <Link href={`/product/${encodeURIComponent(product.slug.current)}`}>
+      <Link
+        passHref
+        href={`/product/${encodeURIComponent(product.slug.current)}`}
+      >
         <div className='relative h-28 w-28 cursor-pointer md:h-52 md:w-52'>
           <Image
             src={urlFor(product.image[0]).width(210).height(210).url()}
@@ -33,19 +36,19 @@ const Product = ({ product }) => {
       <div className='relative pt-3 font-bold'>
         <div className='space-y-2 text-sm text-[#404e65] transition-all duration-200 ease-in hover:text-[#56b0f2] md:text-xl'>
           <Link href={`/product/${encodeURIComponent(product.slug.current)}`}>
-            <a>
-              <p>{product.title}</p>
-            </a>
+            <a>{product.title}</a>
           </Link>
-          <hr />
-          <p className='absolute top-[80px] left-1 font-extrabold text-[#56b0f2]'>
-            {product.price}₴
-          </p>
+        </div>
+
+        <hr />
+
+        <div className='absolute top-[80px] left-1 font-extrabold text-[#56b0f2] md:text-xl'>
+          <p>{product.price}₴</p>
         </div>
 
         <div
           onClick={addItemToBasket}
-          className=' cursor-pointer text-[#56b0f2] transition-all duration-200 hover:text-[#404e65] '
+          className=' cursor-pointer text-[#56b0f2] transition-all duration-200 hover:text-[#404e65]'
         >
           <div className='absolute top-[120px] left-0'>
             <RiShoppingBasketLine

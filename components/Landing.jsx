@@ -43,14 +43,14 @@ const Landing = ({ products }) => {
             )}`}
           >
             <a>
-              <h1 className=' h-44 space-y-3 text-5xl font-semibold tracking-wide  md:h-64 lg:text-6xl xl:text-7xl'>
-                <span className='block text-[#fd831f]'>
+              <h1 className=' h-44 space-y-3 text-5xl font-semibold tracking-wide text-[#404e65] transition-all duration-200 ease-in hover:text-[#56b0f2] md:h-64 lg:text-6xl xl:text-7xl'>
+                <span className='block'>
                   {animateProducts[currentIndex].title.split(' ')[0]}
                 </span>
-                <span className='block text-[#fd831f]'>
+                <span className='block'>
                   {animateProducts[currentIndex].title.split(' ')[1] || ''}
                 </span>
-                <span className='block text-[#fd831f]'>
+                <span className='block'>
                   {animateProducts[currentIndex].title.split(' ')[2] || ''}
                 </span>
               </h1>

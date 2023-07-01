@@ -3,7 +3,7 @@ import Image from 'next/image'
 const Footer = ({ categories }) => {
   return (
     <footer className='lg:mx-20'>
-      <div className='mt-4 flex flex-row justify-around rounded-3xl bg-[#eff8ff] p-14'>
+      <div className='flex flex-row justify-around rounded-3xl bg-[#56b0f275] p-14 pt-12'>
         <div className='flex flex-col items-center justify-center'>
           <div className='relative mb-6 h-16 w-32'>
             <Image
@@ -23,7 +23,7 @@ const Footer = ({ categories }) => {
             </div>
             <div>
               Email:
-              <a href='mailto:josefkaru@gmail.com'>josefkaru@gmail.com</a>
+              <a href='mailto:josefkaru@gmail.com'> josefkaru@gmail.com</a>
             </div>
           </div>
         </div>

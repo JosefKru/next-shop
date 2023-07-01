@@ -12,9 +12,9 @@ function Home({ categories, products }) {
     <MainLayout metaTitle='Room4mommy' categories={categories}>
       <Basket />
 
-      <Header bg='bg-gradient-to-r from-[#fbffaa] ' />
+      <Header bg='bg- [#fbffaa] gradient-to-r from-[]' />
 
-      <main className='relative bg-gradient-to-br from-[#fbffaa] pb-20 '>
+      <main className='relative pb-20 md:pb-10'>
         <Landing products={products} />
       </main>
 
