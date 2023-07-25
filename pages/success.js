@@ -30,10 +30,10 @@ const Success = () => {
       </Head>
 
       <header className='mx-auto max-w-xl pt-3'>
-        <Link href='/'>
+        <Link href='/' passHref>
           <div className='relative ml-4 h-20 w-40 cursor-pointer opacity-90 transition hover:opacity-100 lg:hidden'>
             <Image
-              src='/logo.svg'
+              src='/logo2.png'
               layout='fill'
               objectFit='contain'
               alt='logo'
@@ -44,10 +44,10 @@ const Success = () => {
 
       <main className='grid grid-cols-1 lg:grid-cols-9'>
         <section className='order-2 mx-auto max-w-xl pb-12 lg:col-span-5 lg:mx-0 lg:max-w-none lg:pr-16 lg:pt-16 xl:pl-16 2xl:pl-44'>
-          <Link href='/'>
+          <Link href='/' passHref>
             <div className='relative ml-14 hidden h-28 w-44 cursor-pointer opacity-90 transition hover:opacity-100 lg:inline-flex'>
               <Image
-                src='/logo.svg'
+                src='/logo2.png'
                 layout='fill'
                 objectFit='contain'
                 alt='logo'
