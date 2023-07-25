@@ -33,11 +33,6 @@ function Header({ bg = null }) {
       href: '',
       className: 'headerLink',
     },
-    {
-      title: 'FAQ',
-      href: '',
-      className: 'headerLink',
-    },
   ]
 
   // console.log(session)
